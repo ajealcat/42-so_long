@@ -6,7 +6,7 @@
 #    By: ajearuth <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/02 14:57:32 by ajearuth          #+#    #+#              #
-#    Updated: 2021/12/29 16:01:41 by ajearuth         ###   ########.fr        #
+#    Updated: 2022/01/03 12:23:27 by ajearuth         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME = so_long
 
 # Project sources and objs 
 
-SRCS = 
+SRCS = main.c 
 SRCSD = srcs/
 OBJSD = objs/
 OBJS = $(addprefix $(OBJSD), $(SRCS:.c=.o))
@@ -36,20 +36,20 @@ LIBFT = $(addprefix $(LIBFTD), libft.a)
 # Minilibx sources and objs
 
 MLXD = $(addprefix $(LIBSD), mlx_linux/)
-MLX = $(addprefix $(MLXD), libmlx.a)
-MLX_FLAGS = -lX11, -lXext 
+MLX = $(addprefix $(MLXD), libmlx_Linux.a)
+MLX_FLAGS = -lX11 -lXext 
 
 DEPS = $(addprefix $(OBJD), $(SRCS:.c=.d))
 LIBS = $(LIBFT) $(MLX)
 LIBS_MAKE = make -C
-CC = gcc -c -o
-COMPIL = gcc -o
+CC = clang -c -o
+COMPIL = clang
 FLAGS = -Wall -Wextra -Werror
 
 all: $(NAME)
 
 $(NAME):	$(LIBS) $(OBJS)
-	$(COMPIL) $@ $(OBJS) $(MLX_FLAGS) $(LIBS)
+	$(COMPIL) $(FLAGS) $(OBJS) $(MLX_FLAGS) $(LIBS) -o $@
 	@echo "\033[0;32m\n          _         "
 	@echo "   ______/ \-.   _  "
 	@echo ".-/     (    o\_//    *~o~o~* OK *~o~o~* "
@@ -60,19 +60,20 @@ $(NAME):	$(LIBS) $(OBJS)
 
 $(OBJSD)%.o: $(SRCSD)%.c
 	mkdir -p $(OBJSD)
-	$(CC) $@ $< $(FLAGS) 
+	$(CC) $@ $(FLAGS) -I$(LIBFTD) -I$(MLXD) -MMD $<
 
-$(LIBS): $(LIBS_MAKE) $(LIBFTD) bonus
+$(LIBS):
 	$(LIBS_MAKE) $(MLXD) all
+	$(LIBS_MAKE) $(LIBFTD) bonus
 
 $(BONUSOD)%.o: $(BONUSD)%.c
 	mkdir -p $(BONUSOD)
-	$(CC) $@ $< $(FLAGS)
+	$(CC) $@ $(FLAGS) -I$(LIFTD) -I$(MLXD) -MMD $< 
 
 bonus: $(BONUS_NAME)
 
 $(BONUS_NAME) : $(OBJSBONUS) $(LIBS) 
-	$(COMPIL) $(BONUS_NAME) $(OBJSBONUS) $(LIBS)
+	$(COMPIL) -o $(BONUS_NAME) $(OBJSBONUS) $(LIBS)
 
 clean:
 	rm -rf $(OBJSD) $(BONUSOD)
@@ -88,5 +89,5 @@ re: fclean all
 
 -include $(DEPS) 
 
-.PHONY: all clean fclean re
+.PHONY: all bonus clean fclean re
 

@@ -6,8 +6,18 @@
 /*   By: ajearuth <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/29 17:39:49 by ajearuth          #+#    #+#             */
-/*   Updated: 2021/12/29 17:39:52 by ajearuth         ###   ########.fr       */
+/*   Updated: 2022/01/03 11:59:04 by ajearuth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "so_long.h"
 
+
+int main(void)
+{
+	void	*mlx_ptr;
+
+	mlx_ptr = mlx_init();
+	mlx_destroy_display(mlx_ptr);
+	free(mlx_ptr);
+}

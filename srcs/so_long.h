@@ -6,7 +6,7 @@
 /*   By: ajearuth <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/29 17:40:02 by ajearuth          #+#    #+#             */
-/*   Updated: 2021/12/29 17:56:20 by ajearuth         ###   ########.fr       */
+/*   Updated: 2022/01/03 12:18:58 by ajearuth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,5 +17,7 @@
 # include <stdlib.h>
 # include <sys/types.h>
 # include <fcntl.h>
+# include "libft.h"
+# include "mlx.h"
 
 #endif
