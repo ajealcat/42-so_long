@@ -6,7 +6,7 @@
 #    By: ajearuth <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/02 14:57:32 by ajearuth          #+#    #+#              #
-#    Updated: 2022/01/03 12:23:27 by ajearuth         ###   ########.fr        #
+#    Updated: 2022/01/04 14:31:07 by ajearuth         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,6 +32,11 @@ OBJSBONUS = $(addprefix $(BONUSOD), $(BONUS_SRCS:.c=.o))
 LIBSD = libs/
 LIBFTD = $(addprefix $(LIBSD), libft/)
 LIBFT = $(addprefix $(LIBFTD), libft.a)
+
+# GNL sources and objs
+
+GNLD = $(addprefix $(LIBSD), get_next_line/)
+GNL = $(addprefix $(GNLD), get_next_line.a)
 
 # Minilibx sources and objs
 
@@ -60,15 +65,16 @@ $(NAME):	$(LIBS) $(OBJS)
 
 $(OBJSD)%.o: $(SRCSD)%.c
 	mkdir -p $(OBJSD)
-	$(CC) $@ $(FLAGS) -I$(LIBFTD) -I$(MLXD) -MMD $<
+	$(CC) $@ $(FLAGS) -I$(LIBFTD) -I$(GNLD) -I$(MLXD) -MMD $<
 
 $(LIBS):
 	$(LIBS_MAKE) $(MLXD) all
 	$(LIBS_MAKE) $(LIBFTD) bonus
+	$(LIBS_MAKE) $(GNLD) bonus
 
 $(BONUSOD)%.o: $(BONUSD)%.c
 	mkdir -p $(BONUSOD)
-	$(CC) $@ $(FLAGS) -I$(LIFTD) -I$(MLXD) -MMD $< 
+	$(CC) $@ $(FLAGS) -I$(LIFTD) -I$(GNLD) -I$(MLXD) -MMD $< 
 
 bonus: $(BONUS_NAME)
 
@@ -79,11 +85,13 @@ clean:
 	rm -rf $(OBJSD) $(BONUSOD)
 	$(LIBS_MAKE) $(LIBFTD) clean
 	$(LIBS_MAKE) $(MLXD) clean
+	$(LIBS_MAKE) $(GNLD) clean
 
 fclean:	clean
 	rm -rf $(NAME) $(BONUS_NAME)
 	$(LIBS_MAKE) $(LIBFTD) fclean
 	$(LIBS_MAKE) $(MLXD) clean
+	$(LIBS_MAKE) $(GNLD) fclean
 
 re: fclean all 
 

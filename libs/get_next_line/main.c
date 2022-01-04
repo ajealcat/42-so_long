@@ -1,44 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ajearuth <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/29 17:40:02 by ajearuth          #+#    #+#             */
-/*   Updated: 2022/01/04 14:01:01 by ajearuth         ###   ########.fr       */
+/*   Created: 2021/06/16 10:14:22 by ajearuth          #+#    #+#             */
+/*   Updated: 2021/06/23 10:34:58 by ajearuth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-# define SO_LONG_H
+#include "get_next_line.h"
+#include <stdio.h>
 
-# include <unistd.h>
-# include <stdlib.h>
-# include <sys/types.h>
-# include <fcntl.h>
-# include "libft.h"
-# include "mlx.h"
-
-# define WINDOW_WIDTH 600
-# define WINDOW_HEIGH 300
-
-typedef struct s_data
+int main(void)
 {
-	void	*mlx_ptr;
-	void	*window_ptr;
-	int	x;
-	int	y;
-}	t_data
+	int		fd;
+	int		i;
+	int		ret;
+	char	*line;
 
-typedef struct s_map
-{
-	??
+	fd = open("text.txt", O_RDONLY);
+	i = 1;
+
+	ret = 1;
+	// faut pas faire de do while c'est interdit attention c'est juste pour le main
+	while (ret > 0)
+	{
+		line = NULL;
+		ret = get_next_line(fd, &line);
+		printf("Ligne %2d |% d|%s|\n", i, ret, line);
+		free(line);
+		++i;
+	}
+	close(fd);
+	return (0);
 }
-
-typedef struct s_player
-{
-	??
-}
-
-#endif

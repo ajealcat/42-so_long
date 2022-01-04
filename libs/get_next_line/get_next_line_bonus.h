@@ -1,44 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   get_next_line_bonus.h                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ajearuth <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/29 17:40:02 by ajearuth          #+#    #+#             */
-/*   Updated: 2022/01/04 14:01:01 by ajearuth         ###   ########.fr       */
+/*   Created: 2021/06/23 10:51:26 by ajearuth          #+#    #+#             */
+/*   Updated: 2021/06/23 10:54:39 by ajearuth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-# define SO_LONG_H
-
+#ifndef GET_NEXT_LINE_BONUS_H
+# define GET_NEXT_LINE_BONUS_H
 # include <unistd.h>
 # include <stdlib.h>
-# include <sys/types.h>
-# include <fcntl.h>
-# include "libft.h"
-# include "mlx.h"
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 4096
+# endif
 
-# define WINDOW_WIDTH 600
-# define WINDOW_HEIGH 300
-
-typedef struct s_data
-{
-	void	*mlx_ptr;
-	void	*window_ptr;
-	int	x;
-	int	y;
-}	t_data
-
-typedef struct s_map
-{
-	??
-}
-
-typedef struct s_player
-{
-	??
-}
+int		ft_strlen(char *str);
+char	*ft_strndup(char *str, int n);
+char	*ft_strnjoin(char *s1, char *s2, int n);
+int		ft_find_end(const char *str, char c);
+int		get_next_line(int fd, char **line);
+char	*ft_next_buffer(char *new_buffer, char *buffer);
 
 #endif
