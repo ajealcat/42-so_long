@@ -6,7 +6,7 @@
 /*   By: ajearuth <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/04 14:15:04 by ajearuth          #+#    #+#             */
-/*   Updated: 2022/01/04 14:20:30 by ajearuth         ###   ########.fr       */
+/*   Updated: 2022/01/04 16:53:23 by ajearuth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,4 +27,14 @@ void	error_message(int i)
 		ft_putstr_fd("Error\n Map must be rectangular", 2);
 }
 
+int	check_walls(char *line, t_map map)
+{
+	int i;
 
+	i = 0;
+
+	while(line[i])
+	{
+		if (line[i] != 1)
+	}
+}
