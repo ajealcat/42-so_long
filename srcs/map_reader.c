@@ -6,7 +6,7 @@
 /*   By: ajearuth <ajearuth@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/04 14:14:13 by ajearuth          #+#    #+#             */
-/*   Updated: 2022/01/06 12:36:42 by ajearuth         ###   ########.fr       */
+/*   Updated: 2022/01/06 18:05:45 by ajearuth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,12 +36,16 @@ int	read_map(t_map map)
 	{
 		line = NULL;
 		ret = get_next_line(fd, &line);
-		map.map[i] = line;
+		if (ret == 1)
+		{
+			map.map[i] = line;
 		if (map.width == 0)
 			map.width = ft_strlen(line);
+		}
 		free(line);
 		++i;
 	}
+	map.map[i] = NULL;
 	map.lengh = i;
 	close(fd);
 	return(0);
