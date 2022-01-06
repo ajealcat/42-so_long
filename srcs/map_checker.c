@@ -6,7 +6,7 @@
 /*   By: ajearuth <ajearuth@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/04 14:15:04 by ajearuth          #+#    #+#             */
-/*   Updated: 2022/01/06 18:05:42 by ajearuth         ###   ########.fr       */
+/*   Updated: 2022/01/06 18:15:48 by ajearuth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,4 +67,76 @@ int	check_walls(char *line, t_map map)
 		++i;
 	}
 	return (0);
+}
+
+int	check_p(t_map map)
+{
+	int i;
+	int j;
+	int count;
+
+	i = 0;
+	count = 0;
+	while (map.map[i])
+	{
+		j = 0;
+		while(map.map[i][j])
+		{
+			if (map.map[i][j] == 'P')
+				++count;
+			++j;
+		}
+		++i;
+	}
+	if (count != 1)
+		return(error_message(4));
+	return(0);
+}
+
+int	check_c(t_map map)
+{
+	int i;
+	int j;
+	int count;
+
+	i = 0;
+	count = 0;
+	while (map.map[i])
+	{
+		j = 0;
+		while(map.map[i][j])
+		{
+			if (map.map[i][j] == 'C')
+				++count;
+			++j;
+		}
+		++i;
+	}
+	if (count < 1)
+		return(error_message(3));
+	return(0);
+}
+
+int	check_e(t_map map)
+{
+	int i;
+	int j;
+	int count;
+
+	i = 0;
+	count = 0;
+	while (map.map[i])
+	{
+		j = 0;
+		while(map.map[i][j])
+		{
+			if (map.map[i][j] == 'E')
+				++count;
+			++j;
+		}
+		++i;
+	}
+	if (count < 1)
+		return(error_message(2));
+	return(0);
 }
