@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_reader.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ajearuth <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ajearuth <ajearuth@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/04 14:14:13 by ajearuth          #+#    #+#             */
-/*   Updated: 2022/01/04 16:59:27 by ajearuth         ###   ########.fr       */
+/*   Updated: 2022/01/06 12:36:42 by ajearuth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ int	read_map(t_map map)
 	{
 		line = NULL;
 		ret = get_next_line(fd, &line);
+		map.map[i] = line;
 		if (map.width == 0)
 			map.width = ft_strlen(line);
 		free(line);

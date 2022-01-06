@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ajearuth <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ajearuth <ajearuth@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/29 17:40:02 by ajearuth          #+#    #+#             */
-/*   Updated: 2022/01/04 16:53:49 by ajearuth         ###   ########.fr       */
+/*   Updated: 2022/01/06 12:40:04 by ajearuth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,5 +37,10 @@ typedef struct s_player
 {
 	??
 }
+
+int	read_map(t_map map);
+int	error_message(int i);
+int	check_size(t_map map);
+int	check_walls(char *line, t_map map);
 
 #endif
