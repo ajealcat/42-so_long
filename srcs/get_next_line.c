@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ajearuth <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ajearuth <ajearuth@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/16 09:22:16 by ajearuth          #+#    #+#             */
-/*   Updated: 2021/06/23 10:49:35 by ajearuth         ###   ########.fr       */
+/*   Updated: 2022/01/07 16:13:28 by ajearuth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static int	ft_dupline(char **line, char *buffer)
 {	
 	char	*tmp_line;
 
-	tmp_line = ft_strnjoin(*line, buffer, ft_strlen(buffer));
+	tmp_line = ft_strnjoin(*line, buffer, ft_strlen_gnl(buffer));
 	if (tmp_line == NULL)
 		return (-1);
 	free(*line);
@@ -64,7 +64,7 @@ int	get_next_line(int fd, char **line)
 	*line = NULL;
 	if (BUFFER_SIZE <= 0 || !line)
 		return (-1);
-	if (ft_strlen(buffer) == 0)
+	if (ft_strlen_gnl(buffer) == 0)
 	{
 		ret_buffer = read(fd, buffer, BUFFER_SIZE);
 		buffer[ret_buffer] = '\0';

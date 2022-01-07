@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ajearuth <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ajearuth <ajearuth@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/16 09:18:13 by ajearuth          #+#    #+#             */
-/*   Updated: 2021/06/23 10:47:24 by ajearuth         ###   ########.fr       */
+/*   Updated: 2022/01/07 16:12:55 by ajearuth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-int	ft_strlen(char *str)
+int	ft_strlen_gnl(char *str)
 {
 	int	i;
 
@@ -30,7 +30,7 @@ char	*ft_strndup(char *str, int n)
 	if (str == NULL)
 		i = 0;
 	else
-		i = ft_strlen(str);
+		i = ft_strlen_gnl(str);
 	if (i < n || n < 0)
 		n = i;
 	result = malloc(sizeof(char) * (n + 1));
@@ -84,7 +84,7 @@ char	*ft_strnjoin(char *s1, char *s2, int n)
 		return (ft_strndup(s2, -1));
 	if (s2 == NULL)
 		return (ft_strndup(s1, -1));
-	res = malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
+	res = malloc(sizeof(char) * (ft_strlen_gnl(s1) + ft_strlen_gnl(s2) + 1));
 	if (res == NULL)
 		return (NULL);
 	p = res;

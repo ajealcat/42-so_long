@@ -6,7 +6,7 @@
 /*   By: ajearuth <ajearuth@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/04 14:15:04 by ajearuth          #+#    #+#             */
-/*   Updated: 2022/01/07 13:21:46 by ajearuth         ###   ########.fr       */
+/*   Updated: 2022/01/07 16:16:43 by ajearuth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	check_size(t_map map)
 	i = 0;
 	while(map.map[i])
 	{
-		if(ft_strlen(map.map[i]) != map.width)
+		if(ft_strlen(map.map[i]) != (size_t)map.width)
 			return (error_message(5));
 		++i;
 	}	

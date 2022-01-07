@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ajearuth <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ajearuth <ajearuth@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/16 09:19:56 by ajearuth          #+#    #+#             */
-/*   Updated: 2021/06/23 10:54:52 by ajearuth         ###   ########.fr       */
+/*   Updated: 2022/01/07 16:13:30 by ajearuth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 #  define BUFFER_SIZE 4096
 # endif
 
-int		ft_strlen(char *str);
+int		ft_strlen_gnl(char *str);
 char	*ft_strndup(char *str, int n);
 char	*ft_strnjoin(char *s1, char *s2, int n);
 int		ft_find_end(const char *str, char c);

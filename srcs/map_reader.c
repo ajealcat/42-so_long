@@ -6,7 +6,7 @@
 /*   By: ajearuth <ajearuth@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/04 14:14:13 by ajearuth          #+#    #+#             */
-/*   Updated: 2022/01/07 13:23:54 by ajearuth         ###   ########.fr       */
+/*   Updated: 2022/01/07 16:17:52 by ajearuth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,19 +15,19 @@
 int	error_message(int i)
 {
 	if (i == 1)
-		ft_putstr_fd("Error\n Map must be surrounded by walls", 2);
+		ft_putstr_fd("Error\nMap must be surrounded by walls", 2);
 	if (i == 2)
-		ft_putstr_fd("Error\n Map must have at least one exit", 2);
+		ft_putstr_fd("Error\nMap must have at least one exit", 2);
 	if (i == 3)
-		ft_putstr_fd("Error\n Map must have at least one collectible", 2);
+		ft_putstr_fd("Error\nMap must have at least one collectible", 2);
 	if (i == 4)
-		ft_putstr_fd("Error\n Map must have one starting position", 2);
+		ft_putstr_fd("Error\nMap must have one starting position", 2);
 	if (i == 5)
-		ft_putstr_fd("Error\n Map must be rectangular", 2);
+		ft_putstr_fd("Error\nMap must be rectangular", 2);
 	if (i == 6)
-		ft_putstr_fd("Error\n Invalid instructions", 2);
+		ft_putstr_fd("Error\nInvalid instructions", 2);
 	if (i == 7)
-		ft_putstr_fd("Error\n Invalid file", 2);
+		ft_putstr_fd("Error\nInvalid file", 2);
 	return (-1);
 }
 
