@@ -6,7 +6,7 @@
 /*   By: ajearuth <ajearuth@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/29 17:40:02 by ajearuth          #+#    #+#             */
-/*   Updated: 2022/01/06 12:40:04 by ajearuth         ###   ########.fr       */
+/*   Updated: 2022/01/07 13:25:03 by ajearuth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,14 +33,14 @@ typedef struct s_map
 	char **map;
 }	t_map;
 
-typedef struct s_player
-{
-	??
-}
-
 int	read_map(t_map map);
 int	error_message(int i);
 int	check_size(t_map map);
 int	check_walls(char *line, t_map map);
+int	check_p(t_map map);
+int	check_c(t_map map);
+int	check_e(t_map map);
+int	is_available_entry(t_map map);
+int	global_checker(t_map map);
 
 #endif

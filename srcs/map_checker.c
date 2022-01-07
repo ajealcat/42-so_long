@@ -6,7 +6,7 @@
 /*   By: ajearuth <ajearuth@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/04 14:15:04 by ajearuth          #+#    #+#             */
-/*   Updated: 2022/01/06 22:58:34 by ajearuth         ###   ########.fr       */
+/*   Updated: 2022/01/07 13:21:46 by ajearuth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	check_size(t_map map)
 	return (0);
 }
 
-int	check_walls(char *line, t_map map)
+int	check_walls(t_map map)
 {
 	int i;
 	
@@ -128,13 +128,20 @@ int	check_e(t_map map)
 int	is_available_entry(t_map map)
 {
 	int i;
+	int j;
 
 	i = 0;
 	while(map.map[i])
 	{
-		if(map.map[i] != '1' || map.map[i] != '0' || map.map[1] != 'P' 
-		|| map.map[i] != 'C' || map.map[i] != 'E')
-			return (error_message(6));
+		j = 0;
+		while (map.map[i][j])
+		{
+			if(map.map[i][j] != '1' || map.map[i][j] != '0' || map.map[i][j] != 'P' 
+			|| map.map[i][j] != 'C' || map.map[i][j] != 'E')
+				return (error_message(6));
+			++j;
+		}
+		++i;
 	}
 	return (0);
 }
