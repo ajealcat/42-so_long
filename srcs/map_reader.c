@@ -6,7 +6,7 @@
 /*   By: ajearuth <ajearuth@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/04 14:14:13 by ajearuth          #+#    #+#             */
-/*   Updated: 2022/01/07 16:17:52 by ajearuth         ###   ########.fr       */
+/*   Updated: 2022/01/10 12:21:28 by ajearuth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,15 +31,24 @@ int	error_message(int i)
 	return (-1);
 }
 
-t_map	init_struct_map(void)
+t_map	init_struct_map(char *file)
 {
 	t_map map;
+	int fd;
+	char *line;
+	int i;
+	int ret; 
 
+	fd = open(file, O_RDONLY);
+	if (fd == -1)
+		return(error_message(7));
 	map.width = 0;
 	map.lengh = 0;
 	map.map = NULL;
 	return (map);
 }
+
+#include <stdio.h> 
 
 int	read_map(t_map map, char *file)
 {
@@ -57,9 +66,10 @@ int	read_map(t_map map, char *file)
 	{
 		line = NULL;
 		ret = get_next_line(fd, &line);
+		printf("ret = %d\n", ret);
 		if (ret == 1)
 		{
-			map.map[i] = line;
+			map.map[i] = ft_strdup(line);
 			if (map.width == 0)
 				map.width = ft_strlen(line);
 		}
@@ -69,7 +79,7 @@ int	read_map(t_map map, char *file)
 	map.map[i] = NULL;
 	map.lengh = i;
 	close(fd);
-	return(global_checker(map));
+	return (global_checker(map));
 }
 
 int	global_checker(t_map map)
