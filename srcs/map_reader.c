@@ -6,7 +6,7 @@
 /*   By: ajearuth <ajearuth@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/04 14:14:13 by ajearuth          #+#    #+#             */
-/*   Updated: 2022/01/10 12:21:28 by ajearuth         ###   ########.fr       */
+/*   Updated: 2022/01/10 15:07:49 by ajearuth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,13 +42,15 @@ t_map	init_struct_map(char *file)
 	fd = open(file, O_RDONLY);
 	if (fd == -1)
 		return(error_message(7));
+	while (ret > 0)
+	{
+		
+	}
 	map.width = 0;
 	map.lengh = 0;
 	map.map = NULL;
 	return (map);
 }
-
-#include <stdio.h> 
 
 int	read_map(t_map map, char *file)
 {
@@ -66,7 +68,6 @@ int	read_map(t_map map, char *file)
 	{
 		line = NULL;
 		ret = get_next_line(fd, &line);
-		printf("ret = %d\n", ret);
 		if (ret == 1)
 		{
 			map.map[i] = ft_strdup(line);
