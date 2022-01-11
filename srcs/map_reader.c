@@ -6,7 +6,7 @@
 /*   By: ajearuth <ajearuth@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/04 14:14:13 by ajearuth          #+#    #+#             */
-/*   Updated: 2022/01/11 13:12:07 by ajearuth         ###   ########.fr       */
+/*   Updated: 2022/01/11 19:41:42 by ajearuth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,42 +30,10 @@ int	error_message(int i)
 		ft_putstr_fd("Error\nInvalid file", 2);
 	return (-1);
 }
-/*
-int	read_map(t_map map, char *file)
-{
-	int fd;
-	char *line;
-	int ret;
-	int i;
 
-	fd = open(file, O_RDONLY);
-	if (fd == -1)
-		return(error_message(7));
-	ret = 1;
-	i = 0;
-	while (ret > 0)
-	{
-		line = NULL;
-		ret = get_next_line(fd, &line);
-		if (ret == 1)
-		{
-			map.map[i] = ft_strdup(line);
-			if (map.width == 0)
-				map.width = ft_strlen(line);
-		}
-		free(line);
-		++i;
-	}
-	map.map[i] = NULL;
-	map.lengh = i;
-	close(fd);
-	return (global_checker(map));
-}*/
-
-int	global_checker(t_map *map)
+int	global_checker(t_map map)
 {
-	printf("OK GLOBAL\n");
-	if (map->map == NULL)
+	if (map.map == NULL)
 		return (-1);
 	if (check_size(map) == -1)
 		return (-1);
@@ -79,6 +47,5 @@ int	global_checker(t_map *map)
 		return (-1);
 	if (check_e(map) == -1)
 		return (-1);
-	printf("OK ALL GLOBAL\n");
 	return (0);
 }

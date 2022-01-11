@@ -16,11 +16,10 @@ t_map	init_struct_map(char *file)
 {
 	t_map map;
 
-	printf("OK INIT\n");
 	map.width = 0;
 	map.lengh = 0;
-	get_param(map, file);
-	init_mapmap(map, file);
+	get_param(&map, file);
+	init_mapmap(&map, file);
 	return (map);
 }
 
@@ -35,7 +34,7 @@ int	open_fd(char *file)
 	return (0);
 }
 
-int	get_param(t_map map, char *file)
+int	get_param(t_map *map, char *file)
 {
 	char *line;
 	int i;
@@ -45,25 +44,24 @@ int	get_param(t_map map, char *file)
 	ret = 1;
 	i = 0;
 	fd = open(file, O_RDONLY);
-	printf("OK PARAM : %d\n", i);
 	while (ret > 0)
 	{
 		line = NULL;
 		ret = get_next_line(fd, &line);
 		if (ret == 1)
 		{
-			if (map.width == 0)
-				map.width = ft_strlen(line);
+			if (map->width == 0)
+				map->width = ft_strlen(line);
 		}
-		free(line);
 		++i;
+		free(line);
 	}
-	map.lengh = i;
+	map->lengh = i - 1;
 	close(fd);
 	return (0);
 }
 
-int init_mapmap(t_map map, char *file)
+int init_mapmap(t_map *map, char *file)
 {
 	int fd;
 	int ret;
@@ -72,8 +70,8 @@ int init_mapmap(t_map map, char *file)
 
 	i = 0;
 	fd = open(file, O_RDONLY);
-	map.map = malloc(sizeof(char*) * map.lengh + 1);
-	if (map.map == NULL)
+	map->map = malloc(sizeof(char*) * map->lengh + 1);
+	if (map->map == NULL)
 		return (-1);
 	ret = 1;
 	while (ret > 0)
@@ -82,12 +80,12 @@ int init_mapmap(t_map map, char *file)
 		ret = get_next_line(fd, &line);
 		if (ret == 1)	
 		{
-			map.map[i] = ft_strdup(line);
+			map->map[i] = ft_strdup(line);
 		}
 		free(line);
 		++i;
 	}
-	map.map[i] = NULL;
+	map->map[i] = NULL;
 	close(fd);
 	return (0);
 }
