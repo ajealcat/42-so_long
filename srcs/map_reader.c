@@ -6,7 +6,7 @@
 /*   By: ajearuth <ajearuth@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/04 14:14:13 by ajearuth          #+#    #+#             */
-/*   Updated: 2022/01/10 15:07:49 by ajearuth         ###   ########.fr       */
+/*   Updated: 2022/01/11 13:12:07 by ajearuth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,28 +30,7 @@ int	error_message(int i)
 		ft_putstr_fd("Error\nInvalid file", 2);
 	return (-1);
 }
-
-t_map	init_struct_map(char *file)
-{
-	t_map map;
-	int fd;
-	char *line;
-	int i;
-	int ret; 
-
-	fd = open(file, O_RDONLY);
-	if (fd == -1)
-		return(error_message(7));
-	while (ret > 0)
-	{
-		
-	}
-	map.width = 0;
-	map.lengh = 0;
-	map.map = NULL;
-	return (map);
-}
-
+/*
 int	read_map(t_map map, char *file)
 {
 	int fd;
@@ -81,21 +60,25 @@ int	read_map(t_map map, char *file)
 	map.lengh = i;
 	close(fd);
 	return (global_checker(map));
-}
+}*/
 
-int	global_checker(t_map map)
+int	global_checker(t_map *map)
 {
-	if (check_size(map) != 0)
+	printf("OK GLOBAL\n");
+	if (map->map == NULL)
 		return (-1);
-	if (check_walls(map) != 0)
+	if (check_size(map) == -1)
 		return (-1);
-	if (is_available_entry(map) != 0)
+	if (check_walls(map) == -1)
 		return (-1);
-	if (check_p(map) != 0)
+	if (is_available_entry(map) == -1)
 		return (-1);
-	if (check_c(map) != 0)
+	if (check_p(map) == -1)
 		return (-1);
-	if (check_e(map) != 0)
+	if (check_c(map) == -1)
 		return (-1);
+	if (check_e(map) == -1)
+		return (-1);
+	printf("OK ALL GLOBAL\n");
 	return (0);
 }
