@@ -70,8 +70,8 @@ int init_mapmap(t_map *map, char *file)
 
 	i = 0;
 	fd = open(file, O_RDONLY);
-	map->map = malloc(sizeof(char*) * map->lengh + 1);
-	if (map->map == NULL)
+	map->mappy = malloc(sizeof(char*) * map->lengh + 1);
+	if (map->mappy == NULL)
 		return (-1);
 	ret = 1;
 	while (ret > 0)
@@ -80,12 +80,12 @@ int init_mapmap(t_map *map, char *file)
 		ret = get_next_line(fd, &line);
 		if (ret == 1)	
 		{
-			map->map[i] = ft_strdup(line);
+			map->mappy[i] = ft_strdup(line);
 		}
 		free(line);
 		++i;
 	}
-	map->map[i] = NULL;
+	map->mappy[i] = NULL;
 	close(fd);
 	return (0);
 }

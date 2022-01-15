@@ -6,7 +6,7 @@
 /*   By: ajearuth <ajearuth@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/04 14:14:13 by ajearuth          #+#    #+#             */
-/*   Updated: 2022/01/11 19:41:42 by ajearuth         ###   ########.fr       */
+/*   Updated: 2022/01/15 20:11:58 by ajearuth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	error_message(int i)
 
 int	global_checker(t_map map)
 {
-	if (map.map == NULL)
+	if (map.mappy == NULL)
 		return (-1);
 	if (check_size(map) == -1)
 		return (-1);

@@ -6,7 +6,7 @@
 /*   By: ajearuth <ajearuth@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/04 14:15:04 by ajearuth          #+#    #+#             */
-/*   Updated: 2022/01/11 19:41:57 by ajearuth         ###   ########.fr       */
+/*   Updated: 2022/01/15 20:12:04 by ajearuth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@ int	check_size(t_map map)
 	int i;
 
 	i = 0;
-	while(map.map[i])
+	while(map.mappy[i])
 	{
-		if(ft_strlen(map.map[i]) != (size_t)map.width)
+		if(ft_strlen(map.mappy[i]) != (size_t)map.width)
 			return (error_message(5));
 		++i;
 	}
@@ -36,18 +36,18 @@ int	check_walls(t_map map)
 	i = 0;
 	while (i < map.width)
 	{
-		if(map.map[0][i] != '1') 
+		if(map.mappy[0][i] != '1') 
 			return (error_message(1));
-		if (map.map[map.lengh - 1][i] != '1')
+		if (map.mappy[map.lengh - 1][i] != '1')
 			return (error_message(1));
 		++i;
 	}
 	i = 0;
 	while (i < map.lengh)
 	{
-		if (map.map[i][0] != '1')
+		if (map.mappy[i][0] != '1')
 			return(error_message(1));
-		if (map.map[i][map.width - 1] != '1')
+		if (map.mappy[i][map.width - 1] != '1')
 			return(error_message(1));
 		++i;
 	}
@@ -62,12 +62,12 @@ int	check_p(t_map map)
 
 	i = 0;
 	count = 0;
-	while (map.map[i])
+	while (map.mappy[i])
 	{
 		j = 0;
-		while(map.map[i][j])
+		while(map.mappy[i][j])
 		{
-			if (map.map[i][j] == 'P')
+			if (map.mappy[i][j] == 'P')
 				++count;
 			++j;
 		}
@@ -86,12 +86,12 @@ int	check_c(t_map map)
 
 	i = 0;
 	count = 0;
-	while (map.map[i])
+	while (map.mappy[i])
 	{
 		j = 0;
-		while(map.map[i][j])
+		while(map.mappy[i][j])
 		{
-			if (map.map[i][j] == 'C')
+			if (map.mappy[i][j] == 'C')
 				++count;
 			++j;
 		}
@@ -110,12 +110,12 @@ int	check_e(t_map map)
 
 	i = 0;
 	count = 0;
-	while (map.map[i])
+	while (map.mappy[i])
 	{
 		j = 0;
-		while(map.map[i][j])
+		while(map.mappy[i][j])
 		{
-			if (map.map[i][j] == 'E')
+			if (map.mappy[i][j] == 'E')
 				++count;
 			++j;
 		}
@@ -132,13 +132,13 @@ int	is_available_entry(t_map map)
 	int j;
 
 	i = 0;
-	while(map.map[i])
+	while(map.mappy[i])
 	{
 		j = 0;
-		while (map.map[i][j])
+		while (map.mappy[i][j])
 		{
-			if(map.map[i][j] != '1' && map.map[i][j] != '0' && map.map[i][j] != 'P' 
-			&& map.map[i][j] != 'C' && map.map[i][j] != 'E')
+			if(map.mappy[i][j] != '1' && map.mappy[i][j] != '0' && map.mappy[i][j] != 'P' 
+			&& map.mappy[i][j] != 'C' && map.mappy[i][j] != 'E')
 				return (error_message(6));
 			++j;
 		}

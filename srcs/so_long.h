@@ -6,7 +6,7 @@
 /*   By: ajearuth <ajearuth@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/29 17:40:02 by ajearuth          #+#    #+#             */
-/*   Updated: 2022/01/15 20:01:11 by ajearuth         ###   ########.fr       */
+/*   Updated: 2022/01/15 20:11:12 by ajearuth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ typedef struct s_map
 {
 	int lengh;
 	int width;
-	char **map;
+	char **mappy;
 }	t_map;
 
 int	error_message(int i);
