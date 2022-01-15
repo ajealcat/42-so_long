@@ -6,7 +6,7 @@
 /*   By: ajearuth <ajearuth@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/29 17:40:02 by ajearuth          #+#    #+#             */
-/*   Updated: 2022/01/15 19:46:05 by ajearuth         ###   ########.fr       */
+/*   Updated: 2022/01/15 20:01:11 by ajearuth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ typedef struct s_data
 {
 	void	*mlx_ptr;
 	void	*window_ptr;
+	void	*image_ptr;
 	int		x;
 	int		y;
 }	t_data;
