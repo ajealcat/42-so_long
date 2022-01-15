@@ -6,7 +6,7 @@
 /*   By: ajearuth <ajearuth@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/29 17:39:49 by ajearuth          #+#    #+#             */
-/*   Updated: 2022/01/11 13:55:34 by ajearuth         ###   ########.fr       */
+/*   Updated: 2022/01/13 17:04:35 by ajearuth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ int main(int ac, char **av)
 			return (1);
 		}
 		mlx_destroy_window(data.mlx_ptr, data.window_ptr);
+		mlx_loop(data.mlx_ptr);
 		mlx_destroy_display(data.mlx_ptr);
 		free(data.mlx_ptr);
 		return (0);
