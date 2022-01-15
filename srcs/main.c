@@ -6,7 +6,7 @@
 /*   By: ajearuth <ajearuth@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/29 17:39:49 by ajearuth          #+#    #+#             */
-/*   Updated: 2022/01/15 23:49:30 by ajearuth         ###   ########.fr       */
+/*   Updated: 2022/01/16 00:32:22 by ajearuth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ int main(int ac, char **av)
 	int i;
 	
 	i = 0;
+	data.x = 48;
+	data.y = 48;
 	if (ac == 2)
 	{
 		if (open_fd(av[1]) == -1)
