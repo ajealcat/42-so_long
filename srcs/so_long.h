@@ -6,7 +6,7 @@
 /*   By: ajearuth <ajearuth@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/29 17:40:02 by ajearuth          #+#    #+#             */
-/*   Updated: 2022/01/11 19:41:48 by ajearuth         ###   ########.fr       */
+/*   Updated: 2022/01/15 19:46:05 by ajearuth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,15 @@
 # include <stdio.h>
 # include "get_next_line.h"
 
-# define WINDOW_HEIGH 300
-# define WINDOW_WIDTH 600
+# define WINDOW_HEIGH 1800
+# define WINDOW_WIDTH 1920
 
 typedef struct s_data
 {
 	void	*mlx_ptr;
 	void	*window_ptr;
+	int		x;
+	int		y;
 }	t_data;
 
 typedef struct s_map
