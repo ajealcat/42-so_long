@@ -6,7 +6,7 @@
 /*   By: ajearuth <ajearuth@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/29 17:39:49 by ajearuth          #+#    #+#             */
-/*   Updated: 2022/01/16 00:32:22 by ajearuth         ###   ########.fr       */
+/*   Updated: 2022/01/16 22:07:18 by ajearuth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ int main(int ac, char **av)
 {
 	t_data data;
 	t_map	map;
+	t_image image;
 	int i;
 	
 	i = 0;
@@ -42,8 +43,8 @@ int main(int ac, char **av)
 			free(data.window_ptr);
 			return (1);
 		}
-		data.image_ptr = mlx_xpm_file_to_image(data.mlx_ptr, "../textures/TX-Wall.xpm", &data.x, &data.y);
-		mlx_put_image_to_window(data.mlx_ptr, data.window_ptr, data.image_ptr, 0, 0);
+		get_image(&image, data);
+		put_on_screen(data, map, image);
 		mlx_loop(data.mlx_ptr);
 		mlx_destroy_window(data.mlx_ptr, data.window_ptr);
 		mlx_destroy_display(data.mlx_ptr);
