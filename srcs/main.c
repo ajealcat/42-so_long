@@ -6,7 +6,7 @@
 /*   By: ajearuth <ajearuth@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/29 17:39:49 by ajearuth          #+#    #+#             */
-/*   Updated: 2022/01/16 22:07:18 by ajearuth         ###   ########.fr       */
+/*   Updated: 2022/01/16 22:21:52 by ajearuth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ int main(int ac, char **av)
 			return (-1);
 		map = init_struct_map(av[1]);
 		global_checker(map);
+		data.win_height = map.lengh * 48;
+		data.win_width = map.width * 48;
 /*		while (map.mappy[i])
 		{
 			ft_putstr_fd(map.mappy[i], 1);
@@ -37,7 +39,7 @@ int main(int ac, char **av)
 */		data.mlx_ptr = mlx_init();
 		if (data.mlx_ptr == NULL)
 			return (1);
-		data.window_ptr = mlx_new_window(data.mlx_ptr, WINDOW_WIDTH, WINDOW_HEIGH, "my first window");
+		data.window_ptr = mlx_new_window(data.mlx_ptr, data.win_width, data.win_height, "my first window");
 		if (data.window_ptr == NULL)
 		{
 			free(data.window_ptr);

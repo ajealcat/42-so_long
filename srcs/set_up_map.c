@@ -40,12 +40,12 @@ void	put_on_screen(t_data data, t_map map, t_image image)
 			if(map.mappy[i][j] == '0')
 			{
 				mlx_put_image_to_window(data.mlx_ptr, \
-				data.window_ptr, image.wall_up, j * 48, i * 48);
+				data.window_ptr, image.grass, j * 48, i * 48);
 			}
 			else if (map.mappy[i][j] == '1')
 			{
 				mlx_put_image_to_window(data.mlx_ptr, \
-				data.window_ptr, image.grass, j * 48, i * 48);
+				data.window_ptr, image.wall_up, j * 48, i * 48);
 			}
 			++j;
 		}
