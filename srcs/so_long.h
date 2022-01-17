@@ -6,7 +6,7 @@
 /*   By: ajearuth <ajearuth@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/29 17:40:02 by ajearuth          #+#    #+#             */
-/*   Updated: 2022/01/16 22:17:01 by ajearuth         ###   ########.fr       */
+/*   Updated: 2022/01/17 16:25:05 by ajearuth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ typedef struct s_image
 	void *wall_down;
 	void *grass;
 	void *door;
-	void *grave;
+	void *bush;
 }	t_image;
 
 int	error_message(int i);
