@@ -24,8 +24,10 @@ void	get_image(t_image *image, t_data data)
 	"textures/Grass.xpm", &data.x, &data.y);
 	image->door = mlx_xpm_file_to_image(data.mlx_ptr, \
 	"textures/Door.xpm", &data.x, &data.y);
-	image->bush = mlx_xpm_file_to_image(data.mlx_ptr, \
-	"textures/Bush.xpm", &data.x, &data.y);
+	image->cherry = mlx_xpm_file_to_image(data.mlx_ptr, \
+	"textures/Cherries.xpm", &data.x, &data.y);
+	image->perso = mlx_xpm_file_to_image(data.mlx_ptr, \
+	"textures/Perso.xpm", &data.x, &data.y);
 }
 
 void	put_on_screen(t_data data, t_map map, t_image image)
@@ -53,10 +55,15 @@ void	put_on_screen(t_data data, t_map map, t_image image)
 					mlx_put_image_to_window(data.mlx_ptr, \
 					data.window_ptr, image.door, j * 48, i * 48);
 				}
-				if (j == 2 || j == 6)
+				if (map.mappy[i][j] == 'C')
 				{
 					mlx_put_image_to_window(data.mlx_ptr, \
-					data.window_ptr, image.bush, j * 48, i * 48);
+					data.window_ptr, image.cherry, j * 48, i * 48);
+				}
+				if (map.mappy[i][j] == 'P')
+				{
+					mlx_put_image_to_window(data.mlx_ptr, \
+					data.window_ptr, image.perso, j * 48, i * 48);
 				}
 			}
 			++j;
