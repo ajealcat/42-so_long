@@ -22,16 +22,6 @@
 # include <stdio.h>
 # include "get_next_line.h"
 
-typedef struct s_data
-{
-	void	*mlx_ptr;
-	void	*window_ptr;
-	int		win_height;
-	int		win_width;
-	int		x;
-	int		y;
-}	t_data;
-
 typedef struct s_map
 {
 	int lengh;
@@ -40,6 +30,17 @@ typedef struct s_map
 	int player_pos_y;
 	char **mappy;
 }	t_map;
+
+typedef struct s_data
+{
+	void	*mlx_ptr;
+	void	*window_ptr;
+	int		win_height;
+	int		win_width;
+	int		x;
+	int		y;
+	t_map	map;
+}	t_data;
 
 typedef struct s_image
 {
@@ -66,6 +67,6 @@ void	get_image(t_image *image, t_data data);
 void	put_on_screen(t_data data, t_map map, t_image image);
 void	keypressed(t_data data, int key);
 void	get_player_pos(t_map *map);
-void	is_moove_possible(t_map *map, char instruction);
+int	is_moove_possible(t_map *map, char instruction);
 
 #endif

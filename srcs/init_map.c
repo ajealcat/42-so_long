@@ -20,6 +20,7 @@ t_map	init_struct_map(char *file)
 	map.lengh = 0;
 	get_param(&map, file);
 	init_mapmap(&map, file);
+	get_player_pos(&map);
 	return (map);
 }
 
@@ -59,6 +60,28 @@ int	get_param(t_map *map, char *file)
 	map->lengh = i - 1;
 	close(fd);
 	return (0);
+}
+
+void	get_player_pos(t_map *map)
+{
+	int i;
+	int j;
+
+	i = 0;
+	while (map->mappy[i])
+	{
+		j = 0;
+		while (map->mappy[i][j])
+		{
+			if (map->mappy[i][j] == 'P')
+			{
+				map->player_pos_x = j;
+				map->player_pos_y = i;
+			}
+			++j;
+		}
+		++i;
+	}	
 }
 
 int init_mapmap(t_map *map, char *file)
