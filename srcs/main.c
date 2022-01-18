@@ -20,23 +20,16 @@ int main(int ac, char **av)
 	int i;
 	
 	i = 0;
-	data.x = 48;
-	data.y = 48;
 	if (ac == 2)
 	{
 		if (open_fd(av[1]) == -1)
 			return (-1);
 		map = init_struct_map(av[1]);
-		global_checker(map);
+		if (global_checker(map) == -1)
+			return (-1);
 		data.win_height = map.lengh * 48;
 		data.win_width = map.width * 48;
-/*		while (map.mappy[i])
-		{
-			ft_putstr_fd(map.mappy[i], 1);
-			write(1, "\n", 1);
-			++i;
-		}
-*/		data.mlx_ptr = mlx_init();
+		data.mlx_ptr = mlx_init();
 		if (data.mlx_ptr == NULL)
 			return (1);
 		data.window_ptr = mlx_new_window(data.mlx_ptr, data.win_width, data.win_height, "my first window");
@@ -53,5 +46,5 @@ int main(int ac, char **av)
 		free(data.mlx_ptr);
 		return (0);
 	}
-	return(error_message(6));
+	return (error_message(6));
 }

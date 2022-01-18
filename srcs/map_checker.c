@@ -18,9 +18,9 @@ int	check_size(t_map map)
 	int i;
 
 	i = 0;
-	while(map.mappy[i])
+	while (map.mappy[i])
 	{
-		if(ft_strlen(map.mappy[i]) != (size_t)map.width)
+		if (ft_strlen(map.mappy[i]) != (size_t)map.width)
 			return (error_message(5));
 		++i;
 	}
@@ -65,7 +65,7 @@ int	check_p(t_map map)
 	while (map.mappy[i])
 	{
 		j = 0;
-		while(map.mappy[i][j])
+		while (map.mappy[i][j])
 		{
 			if (map.mappy[i][j] == 'P')
 				++count;
@@ -74,8 +74,8 @@ int	check_p(t_map map)
 		++i;
 	}
 	if (count != 1)
-		return(error_message(4));
-	return(0);
+		return (error_message(4));
+	return (0);
 }
 
 int	check_c(t_map map)
@@ -89,7 +89,7 @@ int	check_c(t_map map)
 	while (map.mappy[i])
 	{
 		j = 0;
-		while(map.mappy[i][j])
+		while (map.mappy[i][j])
 		{
 			if (map.mappy[i][j] == 'C')
 				++count;
@@ -98,8 +98,8 @@ int	check_c(t_map map)
 		++i;
 	}
 	if (count < 1)
-		return(error_message(3));
-	return(0);
+		return (error_message(3));
+	return (0);
 }
 
 int	check_e(t_map map)
@@ -113,7 +113,7 @@ int	check_e(t_map map)
 	while (map.mappy[i])
 	{
 		j = 0;
-		while(map.mappy[i][j])
+		while (map.mappy[i][j])
 		{
 			if (map.mappy[i][j] == 'E')
 				++count;
@@ -122,8 +122,8 @@ int	check_e(t_map map)
 		++i;
 	}
 	if (count < 1)
-		return(error_message(2));
-	return(0);
+		return (error_message(2));
+	return (0);
 }
 
 int	is_available_entry(t_map map)
@@ -132,12 +132,12 @@ int	is_available_entry(t_map map)
 	int j;
 
 	i = 0;
-	while(map.mappy[i])
+	while (map.mappy[i])
 	{
 		j = 0;
 		while (map.mappy[i][j])
 		{
-			if(map.mappy[i][j] != '1' && map.mappy[i][j] != '0' && map.mappy[i][j] != 'P' 
+			if (map.mappy[i][j] != '1' && map.mappy[i][j] != '0' && map.mappy[i][j] != 'P' 
 			&& map.mappy[i][j] != 'C' && map.mappy[i][j] != 'E')
 				return (error_message(6));
 			++j;

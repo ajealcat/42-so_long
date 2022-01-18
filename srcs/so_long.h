@@ -36,14 +36,14 @@ typedef struct s_map
 {
 	int lengh;
 	int width;
+	int player_pos_x;
+	int player_pos_y;
 	char **mappy;
 }	t_map;
 
 typedef struct s_image
 {
-	void *wall_up;
-	void *wall_side;
-	void *wall_down;
+	void *wall;
 	void *grass;
 	void *door;
 	void *cherry;
@@ -64,5 +64,8 @@ int init_mapmap(t_map *map, char *file);
 t_map	init_struct_map(char *file);
 void	get_image(t_image *image, t_data data);
 void	put_on_screen(t_data data, t_map map, t_image image);
+void	keypressed(t_data data, int key);
+void	get_player_pos(t_map *map);
+void	is_moove_possible(t_map *map, char instruction);
 
 #endif
