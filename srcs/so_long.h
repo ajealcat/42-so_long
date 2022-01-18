@@ -21,6 +21,18 @@
 # include "mlx.h"
 # include <stdio.h>
 # include "get_next_line.h"
+# include <X11/keysym.h>
+# include <X11/X.h>
+# include <X11/Xlib.h>
+
+typedef struct s_image
+{
+	void *wall;
+	void *grass;
+	void *door;
+	void *cherry;
+	void *perso;
+}	t_image;
 
 typedef struct s_map
 {
@@ -39,17 +51,9 @@ typedef struct s_data
 	int		win_width;
 	int		x;
 	int		y;
-	t_map	map;
+	t_map	*map;
+	t_image	*image;
 }	t_data;
-
-typedef struct s_image
-{
-	void *wall;
-	void *grass;
-	void *door;
-	void *cherry;
-	void *perso;
-}	t_image;
 
 int	error_message(int i);
 int	check_size(t_map map);
@@ -65,8 +69,10 @@ int init_mapmap(t_map *map, char *file);
 t_map	init_struct_map(char *file);
 void	get_image(t_image *image, t_data data);
 void	put_on_screen(t_data data, t_map map, t_image image);
-void	keypressed(t_data data, int key);
+int	keypressed(int key, t_data *data);
 void	get_player_pos(t_map *map);
-int	is_moove_possible(t_map *map, char instruction);
+int	is_moove_possible(t_map *map, int instruction);
+int	moove_player(t_data *data, int key);
+
 
 #endif

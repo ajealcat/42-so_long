@@ -77,6 +77,7 @@ void	get_player_pos(t_map *map)
 			{
 				map->player_pos_x = j;
 				map->player_pos_y = i;
+				return ;
 			}
 			++j;
 		}

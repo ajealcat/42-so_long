@@ -15,7 +15,7 @@ NAME = so_long
 # Project sources and objs 
 
 SRCS = main.c get_next_line.c get_next_line_utils.c map_checker.c map_reader.c \
-	init_map.c set_up_map.c
+	init_map.c set_up_map.c moove_player.c
 SRCSD = srcs/
 OBJSD = objs/
 OBJS = $(addprefix $(OBJSD), $(SRCS:.c=.o))
