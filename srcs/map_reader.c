@@ -43,7 +43,7 @@ int	global_checker(t_map map)
 		return (-1);
 	if (check_p(map) == -1)
 		return (-1);
-	if (check_c(map) == -1)
+	if (check_c(&map) == -1)
 		return (-1);
 	if (check_e(map) == -1)
 		return (-1);

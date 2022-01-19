@@ -40,6 +40,7 @@ typedef struct s_map
 	int width;
 	int player_pos_x;
 	int player_pos_y;
+	int collectibles_nbr;
 	char **mappy;
 }	t_map;
 
@@ -59,7 +60,7 @@ int	error_message(int i);
 int	check_size(t_map map);
 int	check_walls(t_map map);
 int	check_p(t_map map);
-int	check_c(t_map map);
+int	check_c(t_map *map);
 int	check_e(t_map map);
 int	is_available_entry(t_map map);
 int	global_checker(t_map map);
@@ -73,6 +74,7 @@ int	keypressed(int key, t_data *data);
 void	get_player_pos(t_map *map);
 int	is_moove_possible(t_map *map, int instruction);
 int	moove_player(t_data *data, int key);
-
+int	next_moove_collectible(t_map *map, int instruction);
+int	next_moove_is_door(t_map *map, int instruction);
 
 #endif

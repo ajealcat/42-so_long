@@ -78,7 +78,7 @@ int	check_p(t_map map)
 	return (0);
 }
 
-int	check_c(t_map map)
+int	check_c(t_map *map)
 {
 	int i;
 	int j;
@@ -86,17 +86,19 @@ int	check_c(t_map map)
 
 	i = 0;
 	count = 0;
-	while (map.mappy[i])
+	while (map->mappy[i])
 	{
 		j = 0;
-		while (map.mappy[i][j])
+		while (map->mappy[i][j])
 		{
-			if (map.mappy[i][j] == 'C')
+			if (map->mappy[i][j] == 'C')
 				++count;
 			++j;
 		}
 		++i;
 	}
+	map->collectibles_nbr = count;
+	printf("collectible nb = %d\n", map->collectibles_nbr);
 	if (count < 1)
 		return (error_message(3));
 	return (0);

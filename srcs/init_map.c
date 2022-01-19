@@ -21,6 +21,7 @@ t_map	init_struct_map(char *file)
 	get_param(&map, file);
 	init_mapmap(&map, file);
 	get_player_pos(&map);
+	check_c(&map);
 	return (map);
 }
 
