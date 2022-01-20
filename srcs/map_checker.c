@@ -6,7 +6,7 @@
 /*   By: ajearuth <ajearuth@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/04 14:15:04 by ajearuth          #+#    #+#             */
-/*   Updated: 2022/01/15 20:12:04 by ajearuth         ###   ########.fr       */
+/*   Updated: 2022/01/20 14:57:51 by ajearuth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,6 @@ int	check_c(t_map *map)
 		++i;
 	}
 	map->collectibles_nbr = count;
-	printf("collectible nb = %d\n", map->collectibles_nbr);
 	if (count < 1)
 		return (error_message(3));
 	return (0);

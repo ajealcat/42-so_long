@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   moove_player.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ajearuth <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/01/20 15:29:21 by ajearuth          #+#    #+#             */
+/*   Updated: 2022/01/20 15:29:27 by ajearuth         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "so_long.h"
 
 int	keypressed(int key, t_data *data)
@@ -68,6 +80,18 @@ int	moove_player(t_data *data, int key)
 {
 	if (is_moove_possible(data->map, key) == -1)
 		return (-1);
+	if (next_moove_is_door(data->map, key) == 42)
+		{
+			if (data->map->collectibles_nbr != 0)
+				return (-1);
+			else
+			{
+				mlx_destroy_window(data->mlx_ptr, data->window_ptr);
+				data->window_ptr = NULL;
+				return (-1);
+				
+			}
+		}
 	next_moove_collectible(data->map, key);
 	data->map->mappy[data->map->player_pos_y][data->map->player_pos_x] = '0';
 	mlx_put_image_to_window(data->mlx_ptr, data->window_ptr, data->image->grass, \
@@ -83,13 +107,12 @@ int	moove_player(t_data *data, int key)
 	data->map->mappy[data->map->player_pos_y][data->map->player_pos_x] = 'P';
 	mlx_put_image_to_window(data->mlx_ptr, data->window_ptr, data->image->perso, \
 	data->map->player_pos_x * 48, data->map->player_pos_y * 48);
-	if (data->map->collectibles_nbr == 0)
-		if (next_moove_is_door(data->map, key) == 42)
-		{
-			mlx_destroy_window(data->mlx_ptr, data->window_ptr);
-			data->window_ptr = NULL;
-			return (-1);
-		}
+	++data->map->count;
+	//Cette partie pour bonus counter sur la map
+	mlx_put_image_to_window(data->mlx_ptr, data->window_ptr, data->image->wall, \
+	0, 0);
+	mlx_string_put(data->mlx_ptr, data->window_ptr, 25, 25, 0xffffff, ft_itoa(data->map->count));
+	printf("Player movements : %d\n", data->map->count);
 	return (0);
 }
 

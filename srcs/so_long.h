@@ -6,7 +6,7 @@
 /*   By: ajearuth <ajearuth@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/29 17:40:02 by ajearuth          #+#    #+#             */
-/*   Updated: 2022/01/17 17:05:13 by ajearuth         ###   ########.fr       */
+/*   Updated: 2022/01/20 14:52:15 by ajearuth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ typedef struct s_map
 	int player_pos_x;
 	int player_pos_y;
 	int collectibles_nbr;
+	int count;
 	char **mappy;
 }	t_map;
 
