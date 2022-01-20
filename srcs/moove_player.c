@@ -6,7 +6,7 @@
 /*   By: ajearuth <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/20 15:29:21 by ajearuth          #+#    #+#             */
-/*   Updated: 2022/01/20 15:29:27 by ajearuth         ###   ########.fr       */
+/*   Updated: 2022/01/20 17:34:02 by ajearuth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,7 @@
 int	keypressed(int key, t_data *data)
 {
 	if (key == XK_Escape)
-	{
-		mlx_destroy_window(data->mlx_ptr, data->window_ptr);
-		data->window_ptr = NULL;
-		return (-1);
-	}
+		destroy_and_quit(data);
 	else if (ft_strchr("wasd", key))
 		moove_player(data, key);
 	return (0);
@@ -81,17 +77,12 @@ int	moove_player(t_data *data, int key)
 	if (is_moove_possible(data->map, key) == -1)
 		return (-1);
 	if (next_moove_is_door(data->map, key) == 42)
-		{
-			if (data->map->collectibles_nbr != 0)
-				return (-1);
-			else
-			{
-				mlx_destroy_window(data->mlx_ptr, data->window_ptr);
-				data->window_ptr = NULL;
-				return (-1);
-				
-			}
-		}
+	{
+		if (data->map->collectibles_nbr != 0)
+			return (-1);
+		else
+			destroy_and_quit(data);
+	}
 	next_moove_collectible(data->map, key);
 	data->map->mappy[data->map->player_pos_y][data->map->player_pos_x] = '0';
 	mlx_put_image_to_window(data->mlx_ptr, data->window_ptr, data->image->grass, \

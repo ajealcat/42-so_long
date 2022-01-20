@@ -6,7 +6,7 @@
 /*   By: ajearuth <ajearuth@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/11 12:07:02 by ajearuth          #+#    #+#             */
-/*   Updated: 2022/01/20 14:55:50 by ajearuth         ###   ########.fr       */
+/*   Updated: 2022/01/20 18:14:32 by ajearuth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ int init_mapmap(t_map *map, char *file)
 
 	i = 0;
 	fd = open(file, O_RDONLY);
-	map->mappy = malloc(sizeof(char*) * map->lengh + 1);
+	map->mappy = (char **)malloc(sizeof(char*) * (map->lengh + 1));
 	if (map->mappy == NULL)
 		return (-1);
 	ret = 1;

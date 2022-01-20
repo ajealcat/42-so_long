@@ -6,11 +6,23 @@
 /*   By: ajearuth <ajearuth@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/29 17:39:49 by ajearuth          #+#    #+#             */
-/*   Updated: 2022/01/16 22:21:52 by ajearuth         ###   ########.fr       */
+/*   Updated: 2022/01/20 17:52:28 by ajearuth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+static t_data init_data(t_data *data, t_map *map, t_image *image)
+{
+	data->win_height = map->lengh * 48;
+	data->win_width = map->width * 48;
+	data->mlx_ptr = mlx_init();
+	data->map = map;
+	data->window_ptr = mlx_new_window(data->mlx_ptr, data->win_width, data->win_height, "so_long");
+	get_image(image, *data);
+	data->image = image;
+	return(*data);
+}
 
 int main(int ac, char **av)
 {
@@ -25,28 +37,24 @@ int main(int ac, char **av)
 		if (open_fd(av[1]) == -1)
 			return (-1);
 		map = init_struct_map(av[1]);
-		if (global_checker(map) == -1)
-			return (-1);
-		data.win_height = map.lengh * 48;
-		data.win_width = map.width * 48;
-		data.mlx_ptr = mlx_init();
-		data.map = &map;
+		data = init_data(&data, &map, &image);
 		if (data.mlx_ptr == NULL)
 			return (1);
-		data.window_ptr = mlx_new_window(data.mlx_ptr, data.win_width, data.win_height, "my first window");
+		if (global_checker(map) == -1)
+		{	
+			free_mappy(&map);
+			return (-1);
+		}
 		if (data.window_ptr == NULL)
 		{
 			free(data.window_ptr);
 			return (1);
 		}
-		get_image(&image, data);
-		data.image = &image;
 		put_on_screen(data, map, image);
 		mlx_key_hook(data.window_ptr, &keypressed, &data);
+		mlx_hook(data.window_ptr, DestroyNotify, StructureNotifyMask, &red_cross, &data);
 		mlx_loop(data.mlx_ptr);
-		mlx_destroy_display(data.mlx_ptr);
-           	free(data.mlx_ptr);	
-		free(map.mappy); //faire une boucle pour ca
+		free_mappy(&map); 
 		return (0);
 	}
 	return (error_message(6));

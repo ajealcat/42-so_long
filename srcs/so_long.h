@@ -6,7 +6,7 @@
 /*   By: ajearuth <ajearuth@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/29 17:40:02 by ajearuth          #+#    #+#             */
-/*   Updated: 2022/01/20 14:52:15 by ajearuth         ###   ########.fr       */
+/*   Updated: 2022/01/20 16:57:41 by ajearuth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,5 +77,9 @@ int	is_moove_possible(t_map *map, int instruction);
 int	moove_player(t_data *data, int key);
 int	next_moove_collectible(t_map *map, int instruction);
 int	next_moove_is_door(t_map *map, int instruction);
+int	free_mappy(t_map *map);
+int	destroy_and_quit(t_data *data);
+int	red_cross(t_data *data);
+
 
 #endif
