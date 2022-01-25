@@ -24,7 +24,7 @@ void	get_image(t_image *image, t_data data)
 	"textures/Cherries.xpm", &data.x, &data.y);
 	image->perso = mlx_xpm_file_to_image(data.mlx_ptr, \
 	"textures/Perso.xpm", &data.x, &data.y);
-	image->counter = mlx_xpm_file_to_image(data.mlx_ptr, \
+	image->wallwalker = mlx_xpm_file_to_image(data.mlx_ptr, \
 	"textures/WallWalker.xpm", &data.x, &data.y);
 	image->perso_gauche = mlx_xpm_file_to_image(data.mlx_ptr, \
 	"textures/Perso_gauche.xpm", &data.x, &data.y);

@@ -6,7 +6,7 @@
 /*   By: ajearuth <ajearuth@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/29 17:40:02 by ajearuth          #+#    #+#             */
-/*   Updated: 2022/01/24 19:01:14 by ajearuth         ###   ########.fr       */
+/*   Updated: 2022/01/25 17:06:54 by ajearuth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 # include "libft.h"
 # include "mlx.h"
 # include <stdio.h>
-# include "get_next_line.h"
+# include "get_next_line_bonus.h"
 # include <X11/keysym.h>
 # include <X11/X.h>
 # include <X11/Xlib.h>
@@ -32,8 +32,11 @@ typedef struct s_image
 	void *door;
 	void *cherry;
 	void *perso;
-	void *counter;
+	void *wallwalker;
 	void *perso_gauche;
+	void *ghost;
+	void *slime1;
+	void *slime2;
 }	t_image;
 
 typedef struct s_map
@@ -84,6 +87,5 @@ int	free_mappy(t_map *map);
 int	destroy_and_quit(t_data *data);
 void	destroy_image(t_data *data);
 int	red_cross(t_data *data);
-
 
 #endif

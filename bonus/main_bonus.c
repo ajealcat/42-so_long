@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   main_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ajearuth <ajearuth@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/29 17:39:49 by ajearuth          #+#    #+#             */
-/*   Updated: 2022/01/20 17:52:28 by ajearuth         ###   ########.fr       */
+/*   Updated: 2022/01/25 17:06:32 by ajearuth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,30 @@ static t_data init_data(t_data *data, t_map *map, t_image *image)
 	return(*data);
 }
 
-int main(int ac, char **av)
+static int	security_first(t_data *data)
+{		
+	if (data->mlx_ptr == NULL)
+		return (1);
+	if (global_checker(data->map) == -1)
+	{	
+		free_mappy(data->map);
+		return (-1);
+	}
+	if (data->window_ptr == NULL)
+	{
+		free(data->window_ptr);
+		return (1);
+	}
+	return (0);
+}
+
+int	main(int ac, char **av)
 {
-	t_data data;
+	t_data	data;
 	t_map	map;
-	t_image image;
-	int i;
-	
+	t_image	image;
+	int		i;
+
 	i = 0;
 	if (ac == 2)
 	{
@@ -38,23 +55,13 @@ int main(int ac, char **av)
 			return (-1);
 		map = init_struct_map(av[1]);
 		data = init_data(&data, &map, &image);
-		if (data.mlx_ptr == NULL)
-			return (1);
-		if (global_checker(map) == -1)
-		{	
-			free_mappy(&map);
-			return (-1);
-		}
-		if (data.window_ptr == NULL)
-		{
-			free(data.window_ptr);
-			return (1);
-		}
-		put_on_screen(data, map, image);
+		security_first(&data);
+		put_on_screen(&data, &map, &image);
 		mlx_key_hook(data.window_ptr, &keypressed, &data);
-		mlx_hook(data.window_ptr, DestroyNotify, StructureNotifyMask, &red_cross, &data);
+		mlx_hook(data.window_ptr, DestroyNotify,
+			StructureNotifyMask, &red_cross, &data);
 		mlx_loop(data.mlx_ptr);
-		free_mappy(&map); 
+		free_mappy(&map);
 		return (0);
 	}
 	return (error_message(6));
