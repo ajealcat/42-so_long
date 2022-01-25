@@ -83,5 +83,4 @@ int	destroy_and_quit(t_data *data);
 void	destroy_image(t_data *data);
 int	red_cross(t_data *data);
 
-
 #endif

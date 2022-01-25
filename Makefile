@@ -47,7 +47,7 @@ LIBS = $(LIBFT) $(MLX)
 LIBS_MAKE = make -C
 CC = clang -c -o
 COMPIL = clang
-FLAGS = -Wall -Wextra -Werror -g
+FLAGS = -Wall -Wextra -Werror 
 
 all: $(NAME)
 
@@ -75,8 +75,8 @@ $(BONUSOD)%.o: $(BONUSD)%.c
 
 bonus: $(BONUS_NAME)
 
-$(BONUS_NAME) : $(OBJSBONUS) $(LIBS) 
-	$(COMPIL) -o $(BONUS_NAME) $(OBJSBONUS) $(LIBS)
+$(BONUS_NAME) : $(LIBS) $(OBJSBONUS) 
+	$(COMPIL) $(BONUS_NAME) $(OBJSBONUS) $(LIBS) -o $@
 
 clean:
 	rm -rf $(OBJSD) $(BONUSOD)

@@ -19,6 +19,7 @@ t_map	init_struct_map(char *file)
 	map.width = 0;
 	map.lengh = 0;
 	map.count = 0;
+	map.collectibles_nbr = 0;
 	get_param(&map, file);
 	init_mapmap(&map, file);
 	get_player_pos(&map);
@@ -111,7 +112,7 @@ int init_mapmap(t_map *map, char *file)
 		free(line);
 		++i;
 	}
-	map->mappy[i] = NULL;
+	map->mappy[i - 1] = NULL;
 	close(fd);
 	return (0);
 }

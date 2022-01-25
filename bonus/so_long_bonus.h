@@ -60,13 +60,13 @@ typedef struct s_data
 }	t_data;
 
 int	error_message(int i);
-int	check_size(t_map map);
-int	check_walls(t_map map);
-int	check_p(t_map map);
+int	check_size(t_map *map);
+int	check_walls(t_map *map);
+int	check_p(t_map *map);
 int	check_c(t_map *map);
-int	check_e(t_map map);
-int	is_available_entry(t_map map);
-int	global_checker(t_map map);
+int	check_e(t_map *map);
+int	is_available_entry(t_map *map);
+int	global_checker(t_map *map);
 int	open_fd(char *file);
 int	get_param(t_map *map, char *file);
 int init_mapmap(t_map *map, char *file);
@@ -82,6 +82,7 @@ int	next_moove_collectible(t_map *map, int instruction);
 int	next_moove_is_door(t_map *map, int instruction);
 int	free_mappy(t_map *map);
 int	destroy_and_quit(t_data *data);
+void	destroy_image(t_data *data);
 int	red_cross(t_data *data);
 
 

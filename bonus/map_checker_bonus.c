@@ -12,49 +12,48 @@
 
 #include "so_long_bonus.h"
 
-
-int	check_size(t_map map)
+int	check_size(t_map *map)
 {
 	int i;
 
 	i = 0;
-	while (map.mappy[i])
+	while (map->mappy[i])
 	{
-		if (ft_strlen(map.mappy[i]) != (size_t)map.width)
+		if (ft_strlen(map->mappy[i]) != (size_t)map->width)
 			return (error_message(5));
 		++i;
 	}
-	if (i != map.lengh)
+	if (i != map->lengh)
 		return (error_message(5));
 	return (0);
 }
 
-int	check_walls(t_map map)
+int	check_walls(t_map *map)
 {
 	int i;
 	
 	i = 0;
-	while (i < map.width)
+	while (i < map->width)
 	{
-		if(map.mappy[0][i] != '1') 
+		if(map->mappy[0][i] != '1') 
 			return (error_message(1));
-		if (map.mappy[map.lengh - 1][i] != '1')
+		if (map->mappy[map->lengh - 1][i] != '1')
 			return (error_message(1));
 		++i;
 	}
 	i = 0;
-	while (i < map.lengh)
+	while (i < map->lengh)
 	{
-		if (map.mappy[i][0] != '1')
+		if (map->mappy[i][0] != '1')
 			return(error_message(1));
-		if (map.mappy[i][map.width - 1] != '1')
+		if (map->mappy[i][map->width - 1] != '1')
 			return(error_message(1));
 		++i;
 	}
 	return (0);
 }
 
-int	check_p(t_map map)
+int	check_p(t_map *map)
 {
 	int i;
 	int j;
@@ -62,12 +61,12 @@ int	check_p(t_map map)
 
 	i = 0;
 	count = 0;
-	while (map.mappy[i])
+	while (map->mappy[i])
 	{
 		j = 0;
-		while (map.mappy[i][j])
+		while (map->mappy[i][j])
 		{
-			if (map.mappy[i][j] == 'P')
+			if (map->mappy[i][j] == 'P')
 				++count;
 			++j;
 		}
@@ -103,7 +102,7 @@ int	check_c(t_map *map)
 	return (0);
 }
 
-int	check_e(t_map map)
+int	check_e(t_map *map)
 {
 	int i;
 	int j;
@@ -111,12 +110,12 @@ int	check_e(t_map map)
 
 	i = 0;
 	count = 0;
-	while (map.mappy[i])
+	while (map->mappy[i])
 	{
 		j = 0;
-		while (map.mappy[i][j])
+		while (map->mappy[i][j])
 		{
-			if (map.mappy[i][j] == 'E')
+			if (map->mappy[i][j] == 'E')
 				++count;
 			++j;
 		}
@@ -127,19 +126,19 @@ int	check_e(t_map map)
 	return (0);
 }
 
-int	is_available_entry(t_map map)
+int	is_available_entry(t_map *map)
 {
 	int i;
 	int j;
 
 	i = 0;
-	while (map.mappy[i])
+	while (map->mappy[i])
 	{
 		j = 0;
-		while (map.mappy[i][j])
+		while (map->mappy[i][j])
 		{
-			if (map.mappy[i][j] != '1' && map.mappy[i][j] != '0' && map.mappy[i][j] != 'P' 
-			&& map.mappy[i][j] != 'C' && map.mappy[i][j] != 'E')
+			if (map->mappy[i][j] != '1' && map->mappy[i][j] != '0' && map->mappy[i][j] != 'P' 
+			&& map->mappy[i][j] != 'C' && map->mappy[i][j] != 'E')
 				return (error_message(6));
 			++j;
 		}
