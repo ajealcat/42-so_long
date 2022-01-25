@@ -23,7 +23,9 @@ OBJS = $(addprefix $(OBJSD), $(SRCS:.c=.o))
 #  Bonus sources and objs 
 
 BONUS_NAME = so_long_bonus
-BONUS_SRCS = 
+BONUS_SRCS = main_bonus.c get_next_line_bonus.c get_next_line_utils_bonus.c map_checker_bonus.c \
+	map_reader_bonus.c init_map_bonus.c set_up_map_bonus.c \
+	moove_player_bonus.c close_nicely_bonus.c
 BONUSD = bonus/
 BONUSOD = $(BONUSD)objsb/
 OBJSBONUS = $(addprefix $(BONUSOD), $(BONUS_SRCS:.c=.o))
@@ -45,7 +47,7 @@ LIBS = $(LIBFT) $(MLX)
 LIBS_MAKE = make -C
 CC = clang -c -o
 COMPIL = clang
-FLAGS = -Wall -Wextra -Werror
+FLAGS = -Wall -Wextra -Werror -g
 
 all: $(NAME)
 

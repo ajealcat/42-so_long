@@ -26,47 +26,47 @@ void	get_image(t_image *image, t_data data)
 	"textures/Perso.xpm", &data.x, &data.y);
 }
 
-void	put_on_screen(t_data data, t_map map, t_image image)
+void	put_on_screen(t_data *data, t_map *map, t_image *image)
 {
 	int i;
 	int j;
 
 	i = 0;
-	while(map.mappy[i])
+	while(map->mappy[i])
 	{
 		j = 0;
-		while(map.mappy[i][j])
+		while(map->mappy[i][j])
 		{
-			if (map.mappy[i][j] == '1')
+			if (map->mappy[i][j] == '1')
 			{
-				mlx_put_image_to_window(data.mlx_ptr, \
-				data.window_ptr, image.wall, j * 48, i * 48);
+				mlx_put_image_to_window(data->mlx_ptr, \
+				data->window_ptr, image->wall, j * 48, i * 48);
 			}
-			else 
-			{
-				mlx_put_image_to_window(data.mlx_ptr, \
-				data.window_ptr, image.grass, j * 48, i * 48);
-				if (map.mappy[i][j] == 'E')
-				{
-					mlx_put_image_to_window(data.mlx_ptr, \
-					data.window_ptr, image.door, j * 48, i * 48);
-				}
-				if (map.mappy[i][j] == 'C')
-				{
-					mlx_put_image_to_window(data.mlx_ptr, \
-					data.window_ptr, image.cherry, j * 48, i * 48);
-				}
-				if (map.mappy[i][j] == 'P')
-				{
-					mlx_put_image_to_window(data.mlx_ptr, \
-					data.window_ptr, image.perso, j * 48, i * 48);
-				}
-			}
+			else
+				put_ecp(data, image, i, j); 
 			++j;
 		}
 		++i;
 	}
 }
 
-
-
+void	put_ecp(t_data *data, t_image *image, int i, int j)
+{
+	mlx_put_image_to_window(data->mlx_ptr, \
+	data->window_ptr, image->grass, j * 48, i * 48);
+	if (data->map->mappy[i][j] == 'E')
+	{
+		mlx_put_image_to_window(data->mlx_ptr, \
+		data->window_ptr, image->door, j * 48, i * 48);
+	}
+	if (data->map->mappy[i][j] == 'C')
+	{
+		mlx_put_image_to_window(data->mlx_ptr, \
+		data->window_ptr, image->cherry, j * 48, i * 48);
+	}
+	if (data->map->mappy[i][j] == 'P')
+	{
+		mlx_put_image_to_window(data->mlx_ptr, \
+		data->window_ptr, image->perso, j * 48, i * 48);
+	}
+}

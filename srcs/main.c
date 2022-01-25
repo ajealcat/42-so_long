@@ -40,7 +40,7 @@ int main(int ac, char **av)
 		data = init_data(&data, &map, &image);
 		if (data.mlx_ptr == NULL)
 			return (1);
-		if (global_checker(map) == -1)
+		if (global_checker(&map) == -1)
 		{	
 			free_mappy(&map);
 			return (-1);
@@ -50,11 +50,11 @@ int main(int ac, char **av)
 			free(data.window_ptr);
 			return (1);
 		}
-		put_on_screen(data, map, image);
+		put_on_screen(&data, &map, &image);
 		mlx_key_hook(data.window_ptr, &keypressed, &data);
 		mlx_hook(data.window_ptr, DestroyNotify, StructureNotifyMask, &red_cross, &data);
 		mlx_loop(data.mlx_ptr);
-		free_mappy(&map); 
+		free_mappy(&map);
 		return (0);
 	}
 	return (error_message(6));

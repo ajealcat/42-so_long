@@ -73,6 +73,7 @@ int init_mapmap(t_map *map, char *file);
 t_map	init_struct_map(char *file);
 void	get_image(t_image *image, t_data data);
 void	put_on_screen(t_data data, t_map map, t_image image);
+void	put_ecp(t_data data, t_image image, int i, int j);
 int	keypressed(int key, t_data *data);
 void	get_player_pos(t_map *map);
 int	is_moove_possible(t_map *map, int instruction);

@@ -31,9 +31,9 @@ int	error_message(int i)
 	return (-1);
 }
 
-int	global_checker(t_map map)
+int	global_checker(t_map *map)
 {
-	if (map.mappy == NULL)
+	if (map->mappy == NULL)
 		return (-1);
 	if (check_size(map) == -1)
 		return (-1);
@@ -43,7 +43,7 @@ int	global_checker(t_map map)
 		return (-1);
 	if (check_p(map) == -1)
 		return (-1);
-	if (check_c(&map) == -1)
+	if (check_c(map) == -1)
 		return (-1);
 	if (check_e(map) == -1)
 		return (-1);

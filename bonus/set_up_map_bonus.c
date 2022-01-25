@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 void	get_image(t_image *image, t_data data)
 {
@@ -28,6 +28,12 @@ void	get_image(t_image *image, t_data data)
 	"textures/WallWalker.xpm", &data.x, &data.y);
 	image->perso_gauche = mlx_xpm_file_to_image(data.mlx_ptr, \
 	"textures/Perso_gauche.xpm", &data.x, &data.y);
+	image->slime1 = mlx_xpm_file_to_image(data.mlx_ptr, \
+	"textures/Slime1.xpm", &data.x, &data.y);
+	image->slime2 = mlx_xpm_file_to_image(data.mlx_ptr, \
+	"textures/Slime2.xpm", &data.x, &data.y);
+	image->ghost = mlx_xpm_file_to_image(data.mlx_ptr, \
+	"textures/Ghost.xpm", &data.x, &data.y);
 }
 
 void	put_on_screen(t_data data, t_map map, t_image image)
@@ -47,30 +53,30 @@ void	put_on_screen(t_data data, t_map map, t_image image)
 				data.window_ptr, image.wall, j * 48, i * 48);
 			}
 			else 
-			{
-				mlx_put_image_to_window(data.mlx_ptr, \
-				data.window_ptr, image.grass, j * 48, i * 48);
-				if (map.mappy[i][j] == 'E')
-				{
-					mlx_put_image_to_window(data.mlx_ptr, \
-					data.window_ptr, image.door, j * 48, i * 48);
-				}
-				if (map.mappy[i][j] == 'C')
-				{
-					mlx_put_image_to_window(data.mlx_ptr, \
-					data.window_ptr, image.cherry, j * 48, i * 48);
-				}
-				if (map.mappy[i][j] == 'P')
-				{
-					mlx_put_image_to_window(data.mlx_ptr, \
-					data.window_ptr, image.perso, j * 48, i * 48);
-				}
-			}
+				put_ecp(data, image, i, j);
 			++j;
 		}
 		++i;
 	}
 }
 
-
-
+void	put_ecp(t_data data, t_image image, int i, int j)
+{
+	mlx_put_image_to_window(data.mlx_ptr, \
+	data.window_ptr, image.grass, j * 48, i * 48);
+	if (data.map->mappy[i][j] == 'E')
+	{
+		mlx_put_image_to_window(data.mlx_ptr, \
+		data.window_ptr, image.door, j * 48, i * 48);
+	}
+	if (data.map->mappy[i][j] == 'C')
+	{
+		mlx_put_image_to_window(data.mlx_ptr, \
+		data.window_ptr, image.cherry, j * 48, i * 48);
+	}
+	if (data.map->mappy[i][j] == 'P')
+	{
+		mlx_put_image_to_window(data.mlx_ptr, \
+		data.window_ptr, image.perso, j * 48, i * 48);
+	}
+}

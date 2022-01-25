@@ -22,19 +22,29 @@ int	free_mappy(t_map *map)
 		free(map->mappy[i]);
 		++i;
 	}
-	free(map->mappy);
+	if (map->mappy)
+		free(map->mappy);
 	return (-1);
 }
 
 int	destroy_and_quit(t_data *data)
 {
+	destroy_image(data);
 	mlx_destroy_window(data->mlx_ptr, data->window_ptr);
-	mlx_destroy_display(data->mlx_ptr);
 	data->window_ptr = NULL;
+	mlx_destroy_display(data->mlx_ptr);
 	free(data->mlx_ptr);
 	free_mappy(data->map);
 	exit(0);
-	return (-1);
+}
+
+void	destroy_image(t_data *data)
+{
+	mlx_destroy_image(data->mlx_ptr, data->image->wall);
+	mlx_destroy_image(data->mlx_ptr, data->image->door);
+	mlx_destroy_image(data->mlx_ptr, data->image->cherry);
+	mlx_destroy_image(data->mlx_ptr, data->image->grass);
+	mlx_destroy_image(data->mlx_ptr, data->image->perso);
 }
 
 int	red_cross(t_data *data)

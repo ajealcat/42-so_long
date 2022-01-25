@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 int	free_mappy(t_map *map)
 {
@@ -32,7 +32,8 @@ int	destroy_and_quit(t_data *data)
 	mlx_destroy_display(data->mlx_ptr);
 	data->window_ptr = NULL;
 	free(data->mlx_ptr);
-	free_mappy(data->map);
+	if(data->map)
+		free_mappy(data->map);
 	exit(0);
 	return (-1);
 }

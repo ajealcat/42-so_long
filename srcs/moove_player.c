@@ -99,10 +99,6 @@ int	moove_player(t_data *data, int key)
 	mlx_put_image_to_window(data->mlx_ptr, data->window_ptr, data->image->perso, \
 	data->map->player_pos_x * 48, data->map->player_pos_y * 48);
 	++data->map->count;
-	//Cette partie pour bonus counter sur la map
-	mlx_put_image_to_window(data->mlx_ptr, data->window_ptr, data->image->wall, \
-	0, 0);
-	mlx_string_put(data->mlx_ptr, data->window_ptr, 25, 25, 0xffffff, ft_itoa(data->map->count));
 	printf("Player movements : %d\n", data->map->count);
 	return (0);
 }
