@@ -6,7 +6,7 @@
 /*   By: ajearuth <ajearuth@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/29 17:40:02 by ajearuth          #+#    #+#             */
-/*   Updated: 2022/01/25 17:11:24 by ajearuth         ###   ########.fr       */
+/*   Updated: 2022/01/25 19:55:44 by ajearuth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,5 +87,7 @@ int	free_mappy(t_map *map);
 int	destroy_and_quit(t_data *data);
 void	destroy_image(t_data *data);
 int	red_cross(t_data *data);
+int put_slime(t_data *data,t_map *map);
+int odd_or_not(int x);
 
 #endif

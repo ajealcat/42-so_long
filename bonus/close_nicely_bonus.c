@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   close_nicely.c                                     :+:      :+:    :+:   */
+/*   close_nicely_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ajearuth <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ajearuth <ajearuth@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/20 15:29:04 by ajearuth          #+#    #+#             */
-/*   Updated: 2022/01/20 17:28:37 by ajearuth         ###   ########.fr       */
+/*   Updated: 2022/01/25 19:55:42 by ajearuth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,11 @@ void	destroy_image(t_data *data)
 	mlx_destroy_image(data->mlx_ptr, data->image->cherry);
 	mlx_destroy_image(data->mlx_ptr, data->image->grass);
 	mlx_destroy_image(data->mlx_ptr, data->image->perso);
+	mlx_destroy_image(data->mlx_ptr, data->image->wallwalker);
+	mlx_destroy_image(data->mlx_ptr, data->image->perso_gauche);
+	mlx_destroy_image(data->mlx_ptr, data->image->ghost);
+	mlx_destroy_image(data->mlx_ptr, data->image->slime1);
+	mlx_destroy_image(data->mlx_ptr, data->image->slime2);
 }
 
 int	red_cross(t_data *data)

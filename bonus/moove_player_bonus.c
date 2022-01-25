@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   moove_player.c                                     :+:      :+:    :+:   */
+/*   moove_player_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ajearuth <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ajearuth <ajearuth@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/20 15:29:21 by ajearuth          #+#    #+#             */
-/*   Updated: 2022/01/20 17:34:02 by ajearuth         ###   ########.fr       */
+/*   Updated: 2022/01/25 19:52:16 by ajearuth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,8 @@ int	next_moove_is_door(t_map *map, int instruction)
 
 int	moove_player(t_data *data, int key)
 {
+	char	*steps;
+
 	if (is_moove_possible(data->map, key) == -1)
 		return (-1);
 	if (next_moove_is_door(data->map, key) == 42)
@@ -84,25 +86,52 @@ int	moove_player(t_data *data, int key)
 			destroy_and_quit(data);
 	}
 	next_moove_collectible(data->map, key);
-	data->map->mappy[data->map->player_pos_y][data->map->player_pos_x] = '0';
-	mlx_put_image_to_window(data->mlx_ptr, data->window_ptr, data->image->grass, \
-	data->map->player_pos_x * 48, data->map->player_pos_y * 48);
 	if (key == 'a')
+	{
+		data->map->mappy[data->map->player_pos_y][data->map->player_pos_x] = '0';
+		mlx_put_image_to_window(data->mlx_ptr, data->window_ptr, data->image->grass, \
+		data->map->player_pos_x * 48, data->map->player_pos_y * 48);
 		data->map->player_pos_x--;
+		data->map->mappy[data->map->player_pos_y][data->map->player_pos_x] = 'P';
+		mlx_put_image_to_window(data->mlx_ptr, data->window_ptr, data->image->perso_gauche, \
+		data->map->player_pos_x * 48, data->map->player_pos_y * 48);
+	}
 	else if (key == 'd')
+	{
+		data->map->mappy[data->map->player_pos_y][data->map->player_pos_x] = '0';
+		mlx_put_image_to_window(data->mlx_ptr, data->window_ptr, data->image->grass, \
+		data->map->player_pos_x * 48, data->map->player_pos_y * 48);
 		data->map->player_pos_x++;
+		data->map->mappy[data->map->player_pos_y][data->map->player_pos_x] = 'P';
+		mlx_put_image_to_window(data->mlx_ptr, data->window_ptr, data->image->perso, \
+		data->map->player_pos_x * 48, data->map->player_pos_y * 48);
+	}
 	else if (key == 'w')
+	{
+		data->map->mappy[data->map->player_pos_y][data->map->player_pos_x] = '0';
+		mlx_put_image_to_window(data->mlx_ptr, data->window_ptr, data->image->grass, \
+		data->map->player_pos_x * 48, data->map->player_pos_y * 48);
 		data->map->player_pos_y--;
+		data->map->mappy[data->map->player_pos_y][data->map->player_pos_x] = 'P';
+		mlx_put_image_to_window(data->mlx_ptr, data->window_ptr, data->image->perso_gauche, \
+		data->map->player_pos_x * 48, data->map->player_pos_y * 48);
+	}
 	else if (key == 's')
+	{
+		data->map->mappy[data->map->player_pos_y][data->map->player_pos_x] = '0';
+		mlx_put_image_to_window(data->mlx_ptr, data->window_ptr, data->image->grass, \
+		data->map->player_pos_x * 48, data->map->player_pos_y * 48);
 		data->map->player_pos_y++;
-	data->map->mappy[data->map->player_pos_y][data->map->player_pos_x] = 'P';
-	mlx_put_image_to_window(data->mlx_ptr, data->window_ptr, data->image->perso, \
-	data->map->player_pos_x * 48, data->map->player_pos_y * 48);
+		data->map->mappy[data->map->player_pos_y][data->map->player_pos_x] = 'P';
+		mlx_put_image_to_window(data->mlx_ptr, data->window_ptr, data->image->perso, \
+		data->map->player_pos_x * 48, data->map->player_pos_y * 48);
+	}
 	++data->map->count;
-	//Cette partie pour bonus counter sur la map
-	mlx_put_image_to_window(data->mlx_ptr, data->window_ptr, data->image->wall, \
+	mlx_put_image_to_window(data->mlx_ptr, data->window_ptr, data->image->wallwalker, \
 	0, 0);
-	mlx_string_put(data->mlx_ptr, data->window_ptr, 25, 25, 0xffffff, ft_itoa(data->map->count));
+	steps = ft_itoa(data->map->count);
+	mlx_string_put(data->mlx_ptr, data->window_ptr, 35, 35, 0xffffff, steps);
+	free(steps);
 	printf("Player movements : %d\n", data->map->count);
 	return (0);
 }

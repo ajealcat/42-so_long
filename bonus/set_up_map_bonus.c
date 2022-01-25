@@ -69,7 +69,12 @@ void	put_ecp(t_data *data, t_image *image, int i, int j)
 		mlx_put_image_to_window(data->mlx_ptr, \
 		data->window_ptr, image->door, j * 48, i * 48);
 	}
-	if (data->map->mappy[i][j] == 'C')
+/*	if (data->map->mappy[i][j] == 'S')
+	{
+		mlx_put_image_to_window(data->mlx_ptr, \
+		data->window_ptr, image->slime1, j * 48, i * 48);
+	}
+*/	if (data->map->mappy[i][j] == 'C')
 	{
 		mlx_put_image_to_window(data->mlx_ptr, \
 		data->window_ptr, image->cherry, j * 48, i * 48);
