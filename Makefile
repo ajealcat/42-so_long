@@ -6,7 +6,7 @@
 #    By: ajearuth <ajearuth@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/02 14:57:32 by ajearuth          #+#    #+#              #
-#    Updated: 2022/01/25 17:05:24 by ajearuth         ###   ########.fr        #
+#    Updated: 2022/01/25 17:12:22 by ajearuth         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -72,7 +72,7 @@ $(LIBS):
 bonus: $(BONUS_NAME)
 
 $(BONUS_NAME) : $(LIBS) $(OBJSBONUS) 
-	$(COMPIL) $(BONUS_NAME) $(OBJSBONUS) $(LIBS) -o
+	$(COMPIL) $(BONUS_NAME) $(OBJSBONUS) $(LIBS) -o $@
 
 $(BONUSOD)%.o: $(BONUSD)%.c
 	mkdir -p $(BONUSOD)
