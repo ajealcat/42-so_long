@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   close_nicely.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ajearuth <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ajearuth <ajearuth@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/20 15:29:04 by ajearuth          #+#    #+#             */
-/*   Updated: 2022/01/20 17:28:37 by ajearuth         ###   ########.fr       */
+/*   Updated: 2022/01/25 16:19:24 by ajearuth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 int	free_mappy(t_map *map)
 {
-	int i;
+	int	i;
 
 	i = 0;
-	while(map->mappy[i])
+	while (map->mappy[i])
 	{
 		free(map->mappy[i]);
 		++i;

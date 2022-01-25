@@ -6,7 +6,7 @@
 #    By: ajearuth <ajearuth@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/02 14:57:32 by ajearuth          #+#    #+#              #
-#    Updated: 2022/01/20 16:47:59 by ajearuth         ###   ########.fr        #
+#    Updated: 2022/01/25 16:53:43 by ajearuth         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,9 +22,9 @@ OBJS = $(addprefix $(OBJSD), $(SRCS:.c=.o))
 
 #  Bonus sources and objs 
 
-BONUS_NAME = so_long_bonus
+BONUS_NAME = bonus
 BONUS_SRCS = main_bonus.c get_next_line_bonus.c get_next_line_utils_bonus.c map_checker_bonus.c \
-	map_reader_bonus.c init_map_bonus.c set_up_map_bonus.c \
+	map_reader_bonus.c init_map_bonus.c set_up_map_bonus.c put_slime_bonus.c \
 	moove_player_bonus.c close_nicely_bonus.c
 BONUSD = bonus/
 BONUSOD = $(BONUSD)objsb/
@@ -63,20 +63,20 @@ $(NAME):	$(LIBS) $(OBJS)
 
 $(OBJSD)%.o: $(SRCSD)%.c
 	mkdir -p $(OBJSD)
-	$(CC) $@ $(FLAGS) -I$(LIBFTD) -I$(MLXD) -MMD $<
+	$(CC) $@ $(FLAGS) -I $(LIBFTD) -I $(MLXD) -MMD $<
 
 $(LIBS):
 	$(LIBS_MAKE) $(MLXD) all
 	$(LIBS_MAKE) $(LIBFTD) bonus
 
-$(BONUSOD)%.o: $(BONUSD)%.c
-	mkdir -p $(BONUSOD)
-	$(CC) $@ $(FLAGS) -I$(LIFTD) -I$(MLXD) -MMD $< 
-
 bonus: $(BONUS_NAME)
 
 $(BONUS_NAME) : $(LIBS) $(OBJSBONUS) 
-	$(COMPIL) $(BONUS_NAME) $(OBJSBONUS) $(LIBS) -o $@
+	$(COMPIL) $(BONUS_NAME) $(OBJSBONUS) $(LIBS) -o
+
+$(BONUSOD)%.o: $(BONUSD)%.c
+	mkdir -p $(BONUSOD)
+	$(CC) $@ $(FLAGS) -I $(LIBFTD) -I $(MLXD) -MMD $< 
 
 clean:
 	rm -rf $(OBJSD) $(BONUSOD)

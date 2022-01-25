@@ -14,7 +14,7 @@
 
 t_map	init_struct_map(char *file)
 {
-	t_map map;
+	t_map	map;
 
 	map.width = 0;
 	map.lengh = 0;
@@ -29,7 +29,7 @@ t_map	init_struct_map(char *file)
 
 int	open_fd(char *file)
 {
-	int fd;
+	int	fd;
 
 	fd = open(file, O_RDONLY);
 	if (fd == -1)
@@ -40,10 +40,10 @@ int	open_fd(char *file)
 
 int	get_param(t_map *map, char *file)
 {
-	char *line;
-	int i;
-	int ret;
-	int fd;
+	char	*line;
+	int		i;
+	int		ret;
+	int		fd;
 
 	ret = 1;
 	i = 0;
@@ -67,8 +67,8 @@ int	get_param(t_map *map, char *file)
 
 void	get_player_pos(t_map *map)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = 0;
 	while (map->mappy[i])
@@ -85,15 +85,15 @@ void	get_player_pos(t_map *map)
 			++j;
 		}
 		++i;
-	}	
+	}
 }
 
-int init_mapmap(t_map *map, char *file)
+int	init_mapmap(t_map *map, char *file)
 {
-	int fd;
-	int ret;
-	int i;
-	char *line;
+	int		fd;
+	int		ret;
+	int		i;
+	char	*line;
 
 	i = 0;
 	fd = open(file, O_RDONLY);
@@ -105,7 +105,7 @@ int init_mapmap(t_map *map, char *file)
 	{
 		line = NULL;
 		ret = get_next_line(fd, &line);
-		if (ret == 1)	
+		if (ret == 1)
 		{
 			map->mappy[i] = ft_strdup(line);
 		}
