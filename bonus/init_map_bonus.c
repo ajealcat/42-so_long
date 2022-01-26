@@ -24,6 +24,7 @@ t_map	init_struct_map(char *file)
 	init_mapmap(&map, file);
 	get_player_pos(&map);
 	check_c(&map);
+	check_s(&map);
 	if (global_checker(&map) == -1)
 	{	
 		free_mappy(&map);

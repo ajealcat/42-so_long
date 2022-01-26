@@ -6,7 +6,7 @@
 /*   By: ajearuth <ajearuth@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 16:04:06 by ajearuth          #+#    #+#             */
-/*   Updated: 2022/01/26 16:55:42 by ajearuth         ###   ########.fr       */
+/*   Updated: 2022/01/26 19:14:54 by ajearuth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 int	check_moove(t_data *data, int key)
 {
 	if (is_moove_possible(data->map, key) == -1)
+		return (-1);
+	if (next_moove_slime(data->map, key) == 666)
 		return (-1);
 	if (next_moove_is_door(data->map, key) == 42)
 	{

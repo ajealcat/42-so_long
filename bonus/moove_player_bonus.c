@@ -6,7 +6,7 @@
 /*   By: ajearuth <ajearuth@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/20 15:29:21 by ajearuth          #+#    #+#             */
-/*   Updated: 2022/01/26 16:53:36 by ajearuth         ###   ########.fr       */
+/*   Updated: 2022/01/26 19:51:00 by ajearuth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,7 @@ int	moove_player(t_data *data, int key)
 	mlx_put_image_to_window(data->mlx_ptr,
 		data->window_ptr, data->image->wallwalker, 0, 0);
 	steps = ft_itoa(data->map->count);
+	put_ghost(data);
 	mlx_string_put(data->mlx_ptr, data->window_ptr, 35, 35, 0xffffff, steps);
 	free(steps);
 	printf("Player movements : %d\n", data->map->count);

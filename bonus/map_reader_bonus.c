@@ -6,7 +6,7 @@
 /*   By: ajearuth <ajearuth@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/04 14:14:13 by ajearuth          #+#    #+#             */
-/*   Updated: 2022/01/26 15:31:28 by ajearuth         ###   ########.fr       */
+/*   Updated: 2022/01/26 19:30:24 by ajearuth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int	is_available_entry(t_map *map)
 		{
 			if (map->mappy[i][j] != '1' && map->mappy[i][j] != '0' &&
 				map->mappy[i][j] != 'P' && map->mappy[i][j] != 'C'
-				&& map->mappy[i][j] != 'E')
+				&& map->mappy[i][j] != 'E' && map->mappy[i][j] != 'S')
 				return (error_message(6));
 			++j;
 		}

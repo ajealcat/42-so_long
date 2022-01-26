@@ -6,7 +6,7 @@
 /*   By: ajearuth <ajearuth@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/29 17:40:02 by ajearuth          #+#    #+#             */
-/*   Updated: 2022/01/26 16:55:27 by ajearuth         ###   ########.fr       */
+/*   Updated: 2022/01/26 19:50:00 by ajearuth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ typedef struct s_map
 	int		player_pos_y;
 	int		collectibles_nbr;
 	int		count;
+	int		slime;
 	char	**mappy;
 }	t_map;
 
@@ -68,6 +69,7 @@ int		check_walls(t_map *map);
 int		check_p(t_map *map);
 int		check_c(t_map *map);
 int		check_e(t_map *map);
+int		check_s(t_map *map);
 int		is_available_entry(t_map *map);
 int		global_checker(t_map *map);
 int		open_fd(char *file);
@@ -86,6 +88,9 @@ int		moove_left(t_data *data, int key);
 int		moove_right(t_data *data, int key);
 int		moove_up(t_data *data, int key);
 int		moove_down(t_data *data, int key);
+int		next_moove_slime(t_map *map, int instruction);
+int		touch_slime(t_map *map);
+void	put_ghost(t_data *data);
 void	get_image(t_image *image, t_data *data);
 void	put_on_screen(t_data *data, t_map *map, t_image *image);
 void	put_ecp(t_data *data, t_image *image, int i, int j);
@@ -95,6 +100,7 @@ void	get_player_pos(t_map *map);
 void	destroy_image(t_data *data);
 void	secure_image(t_data *data, t_image *image);
 void	moove(t_data *data, int key);
+void	add_slime(t_data *data, int i, int j);
 t_map	init_struct_map(char *file);
 
 #endif
