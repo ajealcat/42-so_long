@@ -6,7 +6,7 @@
 /*   By: ajearuth <ajearuth@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/20 15:29:04 by ajearuth          #+#    #+#             */
-/*   Updated: 2022/01/25 19:55:42 by ajearuth         ###   ########.fr       */
+/*   Updated: 2022/01/26 15:28:24 by ajearuth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 int	free_mappy(t_map *map)
 {
-	int i;
+	int	i;
 
 	i = 0;
-	while(map->mappy[i])
+	while (map->mappy[i])
 	{
 		free(map->mappy[i]);
 		++i;
@@ -30,8 +30,11 @@ int	free_mappy(t_map *map)
 int	destroy_and_quit(t_data *data)
 {
 	destroy_image(data);
-	mlx_destroy_window(data->mlx_ptr, data->window_ptr);
-	data->window_ptr = NULL;
+	if (data->window_ptr)
+	{
+		mlx_destroy_window(data->mlx_ptr, data->window_ptr);
+		data->window_ptr = NULL;
+	}
 	mlx_destroy_display(data->mlx_ptr);
 	free(data->mlx_ptr);
 	free_mappy(data->map);
@@ -40,16 +43,26 @@ int	destroy_and_quit(t_data *data)
 
 void	destroy_image(t_data *data)
 {
-	mlx_destroy_image(data->mlx_ptr, data->image->wall);
-	mlx_destroy_image(data->mlx_ptr, data->image->door);
-	mlx_destroy_image(data->mlx_ptr, data->image->cherry);
-	mlx_destroy_image(data->mlx_ptr, data->image->grass);
-	mlx_destroy_image(data->mlx_ptr, data->image->perso);
-	mlx_destroy_image(data->mlx_ptr, data->image->wallwalker);
-	mlx_destroy_image(data->mlx_ptr, data->image->perso_gauche);
-	mlx_destroy_image(data->mlx_ptr, data->image->ghost);
-	mlx_destroy_image(data->mlx_ptr, data->image->slime1);
-	mlx_destroy_image(data->mlx_ptr, data->image->slime2);
+	if (data->image->wall)
+		mlx_destroy_image(data->mlx_ptr, data->image->wall);
+	if (data->image->door)
+		mlx_destroy_image(data->mlx_ptr, data->image->door);
+	if (data->image->cherry)
+		mlx_destroy_image(data->mlx_ptr, data->image->cherry);
+	if (data->image->grass)
+		mlx_destroy_image(data->mlx_ptr, data->image->grass);
+	if (data->image->perso)
+		mlx_destroy_image(data->mlx_ptr, data->image->perso);
+	if (data->image->wallwalker)
+		mlx_destroy_image(data->mlx_ptr, data->image->wallwalker);
+	if (data->image->perso_gauche)
+		mlx_destroy_image(data->mlx_ptr, data->image->perso_gauche);
+	if (data->image->ghost)
+		mlx_destroy_image(data->mlx_ptr, data->image->ghost);
+	if (data->image->slime1)
+		mlx_destroy_image(data->mlx_ptr, data->image->slime1);
+	if (data->image->slime2)
+		mlx_destroy_image(data->mlx_ptr, data->image->slime2);
 }
 
 int	red_cross(t_data *data)

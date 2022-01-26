@@ -24,6 +24,11 @@ t_map	init_struct_map(char *file)
 	init_mapmap(&map, file);
 	get_player_pos(&map);
 	check_c(&map);
+	if (global_checker(&map) == -1)
+	{	
+		free_mappy(&map);
+		exit(-1);
+	}
 	return (map);
 }
 
@@ -97,7 +102,7 @@ int	init_mapmap(t_map *map, char *file)
 
 	i = 0;
 	fd = open(file, O_RDONLY);
-	map->mappy = (char **)malloc(sizeof(char*) * (map->lengh + 1));
+	map->mappy = (char **)malloc(sizeof(char *) * (map->lengh + 1));
 	if (map->mappy == NULL)
 		return (-1);
 	ret = 1;

@@ -6,22 +6,23 @@
 /*   By: ajearuth <ajearuth@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/29 17:39:49 by ajearuth          #+#    #+#             */
-/*   Updated: 2022/01/25 17:06:32 by ajearuth         ###   ########.fr       */
+/*   Updated: 2022/01/26 15:21:34 by ajearuth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long_bonus.h"
 
-static t_data init_data(t_data *data, t_map *map, t_image *image)
+static t_data	init_data(t_data *data, t_map *map, t_image *image)
 {
 	data->win_height = map->lengh * 48;
 	data->win_width = map->width * 48;
 	data->mlx_ptr = mlx_init();
 	data->map = map;
-	data->window_ptr = mlx_new_window(data->mlx_ptr, data->win_width, data->win_height, "so_long");
+	data->window_ptr = mlx_new_window(data->mlx_ptr,
+			data->win_width, data->win_height, "so_long");
 	get_image(image, *data);
 	data->image = image;
-	return(*data);
+	return (*data);
 }
 
 static int	security_first(t_data *data)
@@ -30,13 +31,13 @@ static int	security_first(t_data *data)
 		return (1);
 	if (global_checker(data->map) == -1)
 	{	
-		free_mappy(data->map);
+		destroy_and_quit(data);
 		return (-1);
 	}
 	if (data->window_ptr == NULL)
 	{
-		free(data->window_ptr);
-		return (1);
+		destroy_and_quit(data);
+		return (-1);
 	}
 	return (0);
 }

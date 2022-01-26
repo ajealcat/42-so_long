@@ -12,30 +12,46 @@
 
 #include "so_long.h"
 
-void	get_image(t_image *image, t_data data)
+void	image_error_message(t_data *data)
 {
-	image->wall = mlx_xpm_file_to_image(data.mlx_ptr, \
-	"textures/Wall.xpm", &data.x, &data.y);
-	image->grass = mlx_xpm_file_to_image(data.mlx_ptr, \
-	"textures/Grass.xpm", &data.x, &data.y);
-	image->door = mlx_xpm_file_to_image(data.mlx_ptr, \
-	"textures/Door.xpm", &data.x, &data.y);
-	image->cherry = mlx_xpm_file_to_image(data.mlx_ptr, \
-	"textures/Cherries.xpm", &data.x, &data.y);
-	image->perso = mlx_xpm_file_to_image(data.mlx_ptr, \
-	"textures/Perso.xpm", &data.x, &data.y);
+	ft_putstr_fd("\e[0;31mError\nImage file corrupted\n", 2);
+	destroy_and_quit(data);
+}
+
+void	get_image(t_image *image, t_data *data)
+{
+	image->wall = mlx_xpm_file_to_image(data->mlx_ptr,
+			"textures/Wall.xpm", &data->x, &data->y);
+	if (image->wall == NULL)
+		image_error_message(data);
+	image->grass = mlx_xpm_file_to_image(data->mlx_ptr,
+			"textures/Grass.xpm", &data->x, &data->y);
+	if (image->grass == NULL)
+		image_error_message(data);
+	image->door = mlx_xpm_file_to_image(data->mlx_ptr,
+			"textures/Door.xpm", &data->x, &data->y);
+	if (image->door == NULL)
+		image_error_message(data);
+	image->cherry = mlx_xpm_file_to_image(data->mlx_ptr,
+			"textures/Cherries.xpm", &data->x, &data->y);
+	if (image->cherry == NULL)
+		image_error_message(data);
+	image->perso = mlx_xpm_file_to_image(data->mlx_ptr,
+			"textures/Perso.xpm", &data->x, &data->y);
+	if (image->perso == NULL)
+		image_error_message(data);
 }
 
 void	put_on_screen(t_data *data, t_map *map, t_image *image)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = 0;
-	while(map->mappy[i])
+	while (map->mappy[i])
 	{
 		j = 0;
-		while(map->mappy[i][j])
+		while (map->mappy[i][j])
 		{
 			if (map->mappy[i][j] == '1')
 			{
@@ -43,7 +59,7 @@ void	put_on_screen(t_data *data, t_map *map, t_image *image)
 				data->window_ptr, image->wall, j * 48, i * 48);
 			}
 			else
-				put_ecp(data, image, i, j); 
+				put_ecp(data, image, i, j);
 			++j;
 		}
 		++i;

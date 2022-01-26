@@ -6,7 +6,7 @@
 /*   By: ajearuth <ajearuth@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/29 17:40:02 by ajearuth          #+#    #+#             */
-/*   Updated: 2022/01/25 19:55:44 by ajearuth         ###   ########.fr       */
+/*   Updated: 2022/01/26 15:20:33 by ajearuth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,27 +27,27 @@
 
 typedef struct s_image
 {
-	void *wall;
-	void *grass;
-	void *door;
-	void *cherry;
-	void *perso;
-	void *wallwalker;
-	void *perso_gauche;
-	void *ghost;
-	void *slime1;
-	void *slime2;
+	void	*wall;
+	void	*grass;
+	void	*door;
+	void	*cherry;
+	void	*perso;
+	void	*wallwalker;
+	void	*perso_gauche;
+	void	*ghost;
+	void	*slime1;
+	void	*slime2;
 }	t_image;
 
 typedef struct s_map
 {
-	int lengh;
-	int width;
-	int player_pos_x;
-	int player_pos_y;
-	int collectibles_nbr;
-	int count;
-	char **mappy;
+	int		lengh;
+	int		width;
+	int		player_pos_x;
+	int		player_pos_y;
+	int		collectibles_nbr;
+	int		count;
+	char	**mappy;
 }	t_map;
 
 typedef struct s_data
@@ -62,32 +62,33 @@ typedef struct s_data
 	t_image	*image;
 }	t_data;
 
-int	error_message(int i);
-int	check_size(t_map *map);
-int	check_walls(t_map *map);
-int	check_p(t_map *map);
-int	check_c(t_map *map);
-int	check_e(t_map *map);
-int	is_available_entry(t_map *map);
-int	global_checker(t_map *map);
-int	open_fd(char *file);
-int	get_param(t_map *map, char *file);
-int init_mapmap(t_map *map, char *file);
-t_map	init_struct_map(char *file);
-void	get_image(t_image *image, t_data data);
+int		error_message(int i);
+int		check_size(t_map *map);
+int		check_walls(t_map *map);
+int		check_p(t_map *map);
+int		check_c(t_map *map);
+int		check_e(t_map *map);
+int		is_available_entry(t_map *map);
+int		global_checker(t_map *map);
+int		open_fd(char *file);
+int		get_param(t_map *map, char *file);
+int		init_mapmap(t_map *map, char *file);
+int		keypressed(int key, t_data *data);
+int		is_moove_possible(t_map *map, int instruction);
+int		moove_player(t_data *data, int key);
+int		next_moove_collectible(t_map *map, int instruction);
+int		next_moove_is_door(t_map *map, int instruction);
+int		free_mappy(t_map *map);
+int		destroy_and_quit(t_data *data);
+int		red_cross(t_data *data);
+int		check_moove(t_data *data, int key);
+void	get_image(t_image *image, t_data *data);
 void	put_on_screen(t_data *data, t_map *map, t_image *image);
 void	put_ecp(t_data *data, t_image *image, int i, int j);
-int	keypressed(int key, t_data *data);
+void	secure_image(t_data *data);
+void	image_error_message(t_data *data);
 void	get_player_pos(t_map *map);
-int	is_moove_possible(t_map *map, int instruction);
-int	moove_player(t_data *data, int key);
-int	next_moove_collectible(t_map *map, int instruction);
-int	next_moove_is_door(t_map *map, int instruction);
-int	free_mappy(t_map *map);
-int	destroy_and_quit(t_data *data);
 void	destroy_image(t_data *data);
-int	red_cross(t_data *data);
-int put_slime(t_data *data,t_map *map);
-int odd_or_not(int x);
+t_map	init_struct_map(char *file);
 
 #endif
