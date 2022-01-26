@@ -18,38 +18,53 @@ void	image_error_message(t_data *data)
 	destroy_and_quit(data);
 }
 
-void	get_image(t_image *image, t_data data)
+void	get_image(t_image *image, t_data *data)
 {
-	image->wall = mlx_xpm_file_to_image(data.mlx_ptr,
-			"textures/Wall.xpm", &data.x, &data.y);
+	image->wall = mlx_xpm_file_to_image(data->mlx_ptr,
+			"textures/Wall.xpm", &data->x, &data->y);
+	image->grass = mlx_xpm_file_to_image(data->mlx_ptr,
+			"textures/Grass.xpm", &data->x, &data->y);
+	image->door = mlx_xpm_file_to_image(data->mlx_ptr,
+			"textures/Door.xpm", &data->x, &data->y);
+	image->cherry = mlx_xpm_file_to_image(data->mlx_ptr,
+			"textures/Cherries.xpm", &data->x, &data->y);
+	image->perso = mlx_xpm_file_to_image(data->mlx_ptr,
+			"textures/Perso.xpm", &data->x, &data->y);
+	image->wallwalker = mlx_xpm_file_to_image(data->mlx_ptr,
+			"textures/WallWalker.xpm", &data->x, &data->y);
+	image->perso_gauche = mlx_xpm_file_to_image(data->mlx_ptr,
+			"textures/Perso_gauche.xpm", &data->x, &data->y);
+	image->slime1 = mlx_xpm_file_to_image(data->mlx_ptr,
+			"textures/Slime1.xpm", &data->x, &data->y);
+	image->slime2 = mlx_xpm_file_to_image(data->mlx_ptr,
+			"textures/Slime2.xpm", &data->x, &data->y);
+	image->ghost = mlx_xpm_file_to_image(data->mlx_ptr,
+			"textures/Ghost.xpm", &data->x, &data->y);
+	secure_image(data, image);
+}
+
+void	secure_image(t_data *data, t_image *image)
+{
 	if (image->wall == NULL)
 		image_error_message(data);
-	image->grass = mlx_xpm_file_to_image(data.mlx_ptr,
-			"textures/Grass.xpm", &data.x, &data.y);
 	if (image->grass == NULL)
 		image_error_message(data);
-	image->door = mlx_xpm_file_to_image(data.mlx_ptr,
-			"textures/Door.xpm", &data.x, &data.y);
 	if (image->door == NULL)
 		image_error_message(data);
-	image->cherry = mlx_xpm_file_to_image(data.mlx_ptr,
-			"textures/Cherries.xpm", &data.x, &data.y);
 	if (image->cherry == NULL)
 		image_error_message(data);
-	image->perso = mlx_xpm_file_to_image(data.mlx_ptr,
-			"textures/Perso.xpm", &data.x, &data.y);
 	if (image->perso == NULL)
 		image_error_message(data);
-	image->wallwalker = mlx_xpm_file_to_image(data.mlx_ptr,
-			"textures/WallWalker.xpm", &data.x, &data.y);
-	image->perso_gauche = mlx_xpm_file_to_image(data.mlx_ptr,
-			"textures/Perso_gauche.xpm", &data.x, &data.y);
-	image->slime1 = mlx_xpm_file_to_image(data.mlx_ptr,
-			"textures/Slime1.xpm", &data.x, &data.y);
-	image->slime2 = mlx_xpm_file_to_image(data.mlx_ptr,
-			"textures/Slime2.xpm", &data.x, &data.y);
-	image->ghost = mlx_xpm_file_to_image(data.mlx_ptr,
-			"textures/Ghost.xpm", &data.x, &data.y);
+	if (image->wallwalker == NULL)
+		image_error_message(data);
+	if (image->perso_gauche == NULL)
+		image_error_message(data);
+	if (image->ghost == NULL)
+		image_error_message(data);
+	if (image->slime1 == NULL)
+		image_error_message(data);
+	if (image->slime2 == NULL)
+		image_error_message(data);
 }
 
 void	put_on_screen(t_data *data, t_map *map, t_image *image)

@@ -6,7 +6,7 @@
 /*   By: ajearuth <ajearuth@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/29 17:40:02 by ajearuth          #+#    #+#             */
-/*   Updated: 2022/01/26 15:20:33 by ajearuth         ###   ########.fr       */
+/*   Updated: 2022/01/26 16:55:27 by ajearuth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,13 +82,19 @@ int		free_mappy(t_map *map);
 int		destroy_and_quit(t_data *data);
 int		red_cross(t_data *data);
 int		check_moove(t_data *data, int key);
+int		moove_left(t_data *data, int key);
+int		moove_right(t_data *data, int key);
+int		moove_up(t_data *data, int key);
+int		moove_down(t_data *data, int key);
 void	get_image(t_image *image, t_data *data);
 void	put_on_screen(t_data *data, t_map *map, t_image *image);
 void	put_ecp(t_data *data, t_image *image, int i, int j);
-void	secure_image(t_data *data);
+void	secure_image(t_data *data, t_image *image);
 void	image_error_message(t_data *data);
 void	get_player_pos(t_map *map);
 void	destroy_image(t_data *data);
+void	secure_image(t_data *data, t_image *image);
+void	moove(t_data *data, int key);
 t_map	init_struct_map(char *file);
 
 #endif
