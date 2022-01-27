@@ -23,13 +23,13 @@ t_map	init_struct_map(char *file)
 	get_param(&map, file);
 	init_mapmap(&map, file);
 	get_player_pos(&map);
-	check_c(&map);
 	check_s(&map);
 	if (global_checker(&map) == -1)
 	{
 		free_mappy(&map);
 		exit(-1);
 	}
+	check_c(&map);
 	return (map);
 }
 
@@ -38,7 +38,7 @@ int	open_fd(char *file)
 	int	fd;
 
 	fd = open(file, O_RDONLY);
-	if (fd == -1)
+	if (fd == -1 || open(file, O_DIRECTORY) >= 0)
 		return (error_message(7));
 	close(fd);
 	return (0);
