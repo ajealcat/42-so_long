@@ -34,11 +34,18 @@ t_map	init_struct_map(char *file)
 
 int	open_fd(char *file)
 {
-	int	fd;
+	int		fd;
+	size_t	len;
 
+	len = ft_strlen(file);
 	fd = open(file, O_RDONLY);
 	if (fd == -1 || open(file, O_DIRECTORY) >= 0)
 		return (error_message(7));
+	else if ((ft_strncmp(&file[len - 4], ".ber", 4) != 0) || len <= 4)
+	{
+		close(fd);
+		return (error_message(7));
+	}
 	close(fd);
 	return (0);
 }

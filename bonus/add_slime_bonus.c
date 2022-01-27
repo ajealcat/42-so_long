@@ -6,7 +6,7 @@
 /*   By: ajearuth <ajearuth@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/25 18:02:55 by ajearuth          #+#    #+#             */
-/*   Updated: 2022/01/27 15:42:16 by ajearuth         ###   ########.fr       */
+/*   Updated: 2022/01/27 16:53:48 by ajearuth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	check_s(t_map *map)
 		++i;
 	}
 	map->slime = count;
-	if (map->slime % 2 == 0)
+	if (map->slime > 0 && map->slime % 2 == 0)
 	{
 		ft_putstr_fd("\e[0;31mEnemies patrol in odd numbers\n\e[0;37m", 2);
 		free_mappy(map);
