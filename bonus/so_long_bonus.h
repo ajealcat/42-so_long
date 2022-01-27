@@ -6,7 +6,7 @@
 /*   By: ajearuth <ajearuth@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/29 17:40:02 by ajearuth          #+#    #+#             */
-/*   Updated: 2022/01/26 19:50:00 by ajearuth         ###   ########.fr       */
+/*   Updated: 2022/01/27 14:53:58 by ajearuth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,8 @@ int		moove_up(t_data *data, int key);
 int		moove_down(t_data *data, int key);
 int		next_moove_slime(t_map *map, int instruction);
 int		touch_slime(t_map *map);
+int		s_sprite(t_data *data);
+void	*moove_s(t_data *data);
 void	put_ghost(t_data *data);
 void	get_image(t_image *image, t_data *data);
 void	put_on_screen(t_data *data, t_map *map, t_image *image);

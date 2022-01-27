@@ -6,7 +6,7 @@
 /*   By: ajearuth <ajearuth@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/29 17:39:49 by ajearuth          #+#    #+#             */
-/*   Updated: 2022/01/26 15:57:13 by ajearuth         ###   ########.fr       */
+/*   Updated: 2022/01/27 15:01:53 by ajearuth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,8 @@ static int	security_first(t_data *data)
 	if (data->mlx_ptr == NULL)
 		return (1);
 	if (global_checker(data->map) == -1)
-	{	
+	{
+		printf("OK2\n");
 		destroy_and_quit(data);
 		return (-1);
 	}
@@ -79,6 +80,7 @@ int	main(int ac, char **av)
 		mlx_key_hook(data.window_ptr, &keypressed, &data);
 		mlx_hook(data.window_ptr, DestroyNotify,
 			StructureNotifyMask, &red_cross, &data);
+		mlx_loop_hook(data.mlx_ptr, &s_sprite, &data);
 		mlx_loop(data.mlx_ptr);
 		free_mappy(&map);
 		return (0);

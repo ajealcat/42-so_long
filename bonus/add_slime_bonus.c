@@ -6,7 +6,7 @@
 /*   By: ajearuth <ajearuth@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/25 18:02:55 by ajearuth          #+#    #+#             */
-/*   Updated: 2022/01/26 19:50:52 by ajearuth         ###   ########.fr       */
+/*   Updated: 2022/01/27 15:42:16 by ajearuth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,13 @@ int	check_s(t_map *map)
 			++j;
 		}
 		++i;
-		map->slime = count;
+	}
+	map->slime = count;
+	if (map->slime % 2 == 0)
+	{
+		ft_putstr_fd("\e[0;31mEnemies patrol in odd numbers\n\e[0;37m", 2);
+		free_mappy(map);
+		exit(0);
 	}
 	return (0);
 }
@@ -76,7 +82,29 @@ void	put_ghost(t_data *data)
 			mlx_put_image_to_window(data->mlx_ptr, data->window_ptr,
 				data->image->ghost, data->map->player_pos_x * 48,
 				data->map->player_pos_y * 48);
-		ft_putstr_fd("\e[0;31mYou loose\n", 2);
+		ft_putstr_fd("\e[0;31mBouuuuh ! You loose !\n", 2);
 		destroy_and_quit(data);
 	}
+}
+
+int	s_sprite(t_data *data)
+{
+	int				i;
+	int				j;
+
+	i = 0;
+	usleep(150000);
+	while (data->map->mappy[i])
+	{
+		j = 0;
+		while (data->map->mappy[i][j])
+		{
+			if (data->map->mappy[i][j] == 'S')
+				mlx_put_image_to_window(data->mlx_ptr, data->window_ptr,
+					moove_s(data), j * 48, i * 48);
+			++j;
+		}
+		++i;
+	}
+	return (0);
 }

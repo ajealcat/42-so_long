@@ -6,7 +6,7 @@
 /*   By: ajearuth <ajearuth@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/26 16:04:06 by ajearuth          #+#    #+#             */
-/*   Updated: 2022/01/26 19:14:54 by ajearuth         ###   ########.fr       */
+/*   Updated: 2022/01/27 13:41:55 by ajearuth         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,15 @@ int	check_moove(t_data *data, int key)
 	if (next_moove_is_door(data->map, key) == 42)
 	{
 		if (data->map->collectibles_nbr != 0)
+		{
+			ft_putstr_fd("\e[0;35mPlease collect all the cherries !\n\e[0;37m", 2);
 			return (-1);
+		}
 		else
+		{
+			ft_putstr_fd("\e[0;32mYaaaaay ! You win !\n", 1);
 			destroy_and_quit(data);
+		}
 	}
 	return (0);
 }

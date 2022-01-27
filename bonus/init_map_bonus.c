@@ -26,7 +26,7 @@ t_map	init_struct_map(char *file)
 	check_c(&map);
 	check_s(&map);
 	if (global_checker(&map) == -1)
-	{	
+	{
 		free_mappy(&map);
 		exit(-1);
 	}
